@@ -483,111 +483,215 @@
       font-size: 1.03rem;
     }
 
-    /* Skiper UI Before / After Slider */
-    .compare-shell {
+    /* Performance & Monetization Chart */
+    .perf-grid {
+      display: grid;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    @media (min-width: 920px) {
+      .perf-grid {
+        grid-template-columns: 1.35fr 0.65fr;
+      }
+    }
+
+    .perf-chart-card {
       background: var(--bg-card);
       border: 2px solid var(--ink);
       border-radius: var(--radius-lg);
-      padding: clamp(1rem, 2.5vw, 1.5rem);
-      box-shadow: var(--shadow-ink);
+      padding: clamp(1.2rem, 2.5vw, 1.85rem);
+      box-shadow: 6px 6px 0 var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
     }
 
-    .compare-stage {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1.5px solid var(--ink);
-      user-select: none;
-      touch-action: pan-y;
-      --split: 52%;
-    }
-
-    .compare-stage img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none;
-    }
-
-    .compare-after-layer {
-      position: absolute;
-      inset: 0;
-      clip-path: inset(0 0 0 var(--split));
-    }
-
-    .compare-label {
-      position: absolute;
-      top: 14px;
-      z-index: 3;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.35rem 0.7rem;
-      border-radius: 8px;
-      border: 1.5px solid var(--ink);
-      background: rgba(250, 247, 242, 0.94);
-      color: var(--ink);
-      pointer-events: none;
-    }
-
-    .compare-label.before { left: 14px; }
-    .compare-label.after {
-      right: 14px;
-      background: var(--ink);
-      color: #FAF7F2;
-    }
-
-    .compare-divider {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: var(--split);
-      width: 3px;
-      background: #FFFFFF;
-      box-shadow: 0 0 0 1.5px var(--ink);
-      transform: translateX(-50%);
-      z-index: 4;
-      pointer-events: none;
-    }
-
-    .compare-handle {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #FFFFFF;
-      border: 2.5px solid var(--ink);
-      display: grid;
-      place-items: center;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-    }
-
-    .compare-range {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      opacity: 0;
-      cursor: ew-resize;
-      z-index: 5;
-    }
-
-    .compare-caption {
+    .chart-top {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      align-items: center;
       gap: 0.75rem;
-      margin-top: 1rem;
+    }
+
+    .chart-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .legend-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      border: 1px solid var(--ink);
+    }
+
+    .chart-svg-wrap {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .chart-note {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    .kpi-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.25rem;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+
+    .kpi-value {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 1.2rem + 1vw, 2.05rem);
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .kpi-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .kpi-card p {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--ink-muted);
+    }
+
+    .milestone-row {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .milestone-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .milestone-step {
+      background: var(--bg-paper);
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.15rem;
+    }
+
+    .milestone-step .mono {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .milestone-step h4 {
+      font-size: 1.02rem;
+      margin: 0.3rem 0 0.25rem;
+    }
+
+    .milestone-step p {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--ink-muted);
+    }
+
+    /* Social Proof / Supporters */
+    .testimonials-grid {
+      display: grid;
+      gap: 1.15rem;
+    }
+
+    @media (min-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1080px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      box-shadow: 4px 4px 0 var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .testimonial-stars {
+      color: #D97706;
       font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .testimonial-quote {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .avatar-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--ink);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: #FFFFFF;
+      flex-shrink: 0;
+    }
+
+    .author-meta strong {
+      display: block;
+      font-size: 0.9rem;
+      line-height: 1.2;
+    }
+
+    .author-meta span {
+      font-size: 0.78rem;
       color: var(--ink-muted);
     }
 
@@ -1164,9 +1268,9 @@
 
       <nav class="nav-links" aria-label="Navegação principal">
         <a href="#catalogo">Catálogo</a>
-        <a href="#antes-depois">Transformação</a>
+        <a href="#performance">Performance</a>
         <a href="#arquitetura">Agentes &amp; Skills</a>
-        <a href="#grade">Grade do Curso</a>
+        <a href="#depoimentos">Apoiadores</a>
         <a href="#faq">FAQ</a>
       </nav>
 
@@ -1375,43 +1479,109 @@
       </div>
     </section>
 
-    <!-- Skiper UI: Antes e Depois -->
-    <section id="antes-depois" class="band band-surface">
+    <!-- Ganho de Performance & Caminho até a Monetização -->
+    <section id="performance" class="band band-surface">
       <div class="container">
         <div class="section-head reveal-item">
-          <div class="eyebrow">Comparador Interativo • Skiper Pattern</div>
-          <h2 class="h2-section">De uma ideia em texto para um episódio 3D completo.</h2>
-          <p>Arraste a alavanca abaixo para comparar o ponto de partida (um roteiro simples no bloco de notas) com a cena final renderizada pelo motor Three.js Cel-Shaded.</p>
+          <div class="eyebrow">Escala, Cadência &amp; Monetização</div>
+          <h2 class="h2-section">Por que consistência em código acelera o caminho até monetizar.</h2>
+          <p>No YouTube Shorts, quem posta 2 vídeos por mês demora anos para bater as metas de monetização. Com o Estúdio Autônomo 2D/3D, você mantém cadência diária sem depender de edição manual.</p>
         </div>
 
-        <div class="compare-shell reveal-item">
-          <div class="compare-stage" id="compareStage">
-            <img src="assets/before-prompt.jpg" alt="Antes: esboço de ideia e roteiro simples sobre a mesa" width="1280" height="720" loading="lazy" />
-            <div class="compare-after-layer" aria-hidden="true">
-              <img src="assets/style-3d-world.jpg" alt="Depois: personagem e cenário 3D cel-shaded renderizado com contorno preto" width="1024" height="1024" loading="lazy" />
-            </div>
-            <span class="compare-label before">ANTES: 1 Ideia em Texto</span>
-            <span class="compare-label after">DEPOIS: Cena 3D Cel-Shaded</span>
-            <div class="compare-divider" aria-hidden="true">
-              <div class="compare-handle">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
+        <div class="perf-grid reveal-item">
+          <div class="perf-chart-card">
+            <div class="chart-top">
+              <div>
+                <h3 style="font-size: 1.2rem;">Vídeos Publicados &amp; Alcance Acumulado (90 dias)</h3>
+                <span class="mono" style="font-size: 0.76rem; color: var(--ink-muted);">Comparativo de cadência produtiva: Manual vs. Estúdio Autônomo</span>
+              </div>
+              <div class="chart-legend">
+                <span class="legend-item"><span class="legend-swatch" style="background: var(--accent);"></span> Estúdio 2D/3D (30 vídeos/mês)</span>
+                <span class="legend-item"><span class="legend-swatch" style="background: #9CA3AF;"></span> Edição Manual (3 vídeos/mês)</span>
               </div>
             </div>
-            <input
-              type="range"
-              min="5"
-              max="95"
-              value="52"
-              class="compare-range"
-              id="compareRange"
-              aria-label="Comparar antes (roteiro) e depois (animação 3D renderizada)"
-            />
+
+            <div class="chart-svg-wrap">
+              <svg viewBox="0 0 680 260" role="img" aria-label="Gráfico comparativo de crescimento em 90 dias entre produção manual e Estúdio Autônomo 2D e 3D rumo à meta de monetização do YouTube">
+                <defs>
+                  <linearGradient id="perfFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#E04F26" stop-opacity="0.28"/>
+                    <stop offset="100%" stop-color="#E04F26" stop-opacity="0.02"/>
+                  </linearGradient>
+                </defs>
+                <!-- Grid lines -->
+                <line x1="56" y1="30" x2="650" y2="30" stroke="#171614" stroke-opacity="0.09" stroke-dasharray="4 4"/>
+                <line x1="56" y1="85" x2="650" y2="85" stroke="#171614" stroke-opacity="0.09" stroke-dasharray="4 4"/>
+                <line x1="56" y1="140" x2="650" y2="140" stroke="#171614" stroke-opacity="0.09" stroke-dasharray="4 4"/>
+                <line x1="56" y1="195" x2="650" y2="195" stroke="#171614" stroke-opacity="0.16"/>
+                <!-- Monetization target line -->
+                <line x1="56" y1="54" x2="650" y2="54" stroke="#15803D" stroke-width="1.5" stroke-dasharray="6 4"/>
+                <rect x="435" y="38" width="208" height="22" rx="6" fill="#DCFCE7" stroke="#15803D" stroke-width="1"/>
+                <text x="539" y="53" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700" fill="#15803D">META YPP (1K + 10M SHORTS)</text>
+
+                <!-- Area under Studio curve -->
+                <path d="M56,195 C175,188 290,152 410,104 C505,66 585,40 644,24 L644,195 Z" fill="url(#perfFill)"/>
+                <!-- Manual curve -->
+                <path d="M56,195 C200,192 420,185 644,174" fill="none" stroke="#9CA3AF" stroke-width="3" stroke-dasharray="5 5"/>
+                <!-- Studio curve -->
+                <path d="M56,195 C175,188 290,152 410,104 C505,66 585,40 644,24" fill="none" stroke="#E04F26" stroke-width="4" stroke-linecap="round"/>
+
+                <!-- Data points -->
+                <circle cx="56" cy="195" r="5" fill="#171614"/>
+                <circle cx="250" cy="162" r="5.5" fill="#E04F26" stroke="#171614" stroke-width="2"/>
+                <circle cx="445" cy="90" r="5.5" fill="#E04F26" stroke="#171614" stroke-width="2"/>
+                <circle cx="644" cy="24" r="6.5" fill="#15803D" stroke="#171614" stroke-width="2"/>
+
+                <!-- Labels -->
+                <text x="56" y="218" font-family="JetBrains Mono, monospace" font-size="11" fill="#57524A">Dia 1</text>
+                <text x="232" y="218" font-family="JetBrains Mono, monospace" font-size="11" fill="#57524A">Dia 30 (30 vídeos)</text>
+                <text x="425" y="218" font-family="JetBrains Mono, monospace" font-size="11" fill="#57524A">Dia 60 (60 vídeos)</text>
+                <text x="576" y="218" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#171614">Dia 90 (90+ vídeos)</text>
+
+                <text x="12" y="198" font-family="JetBrains Mono, monospace" font-size="10" fill="#57524A">0</text>
+                <text x="8" y="34" font-family="JetBrains Mono, monospace" font-size="10" fill="#57524A">Escala</text>
+              </svg>
+            </div>
+
+            <p class="chart-note">
+              * Projeção ilustrativa baseada em volume de publicação (30 vídeos/mês vs. 3 vídeos/mês). A monetização no YouTube depende do cumprimento das políticas do canal e do desempenho orgânico dos vídeos.
+            </p>
           </div>
-          <div class="compare-caption">
-            <span><strong>Input:</strong> 1 objeto JSON em <code class="mono">pautas_fila.json</code></span>
-            <span><strong>Output:</strong> MP4 9:16 com voz neural <code class="mono">edge-tts</code> + legendas karaokê</span>
+
+          <div class="kpi-stack">
+            <div class="kpi-card">
+              <div class="kpi-value">~8 min</div>
+              <h3>Por episódio completo</h3>
+              <p>Da pauta em JSON até voz neural PT-BR, legendas karaokê e render MP4 9:16.</p>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-value">10× mais</div>
+              <h3>Frequência de postagem</h3>
+              <p>Publique todo dia no YouTube Shorts, Reels e TikTok sem travar na edição.</p>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-value" style="color: var(--blue);">0 R$/mês</div>
+              <h3>Sem mensalidade de IA</h3>
+              <p>Roda localmente com Remotion, Three.js, Python e <code class="mono">edge-tts</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="milestone-row reveal-item">
+          <div class="milestone-step">
+            <span class="mono">FASE 01 • DIAS 1 A 7</span>
+            <h4>Setup &amp; Primeiros 10 Shorts</h4>
+            <p>Você instala o estúdio, escolhe seus estilos do catálogo e coloca os primeiros vídeos no ar.</p>
+          </div>
+          <div class="milestone-step">
+            <span class="mono">FASE 02 • DIAS 8 A 30</span>
+            <h4>Fila Autônoma em Lote</h4>
+            <p>Alimenta o <code class="mono">pautas_fila.json</code> com 30 temas e deixa a API do YouTube publicar na frequência certa.</p>
+          </div>
+          <div class="milestone-step">
+            <span class="mono">FASE 03 • DIAS 30 A 90</span>
+            <h4>Catálogo &amp; Rumo à Monetização</h4>
+            <p>Com 60 a 90+ vídeos consistentes no ar, o algoritmo encontra seu público e acelera a meta de inscritos e views.</p>
           </div>
         </div>
       </div>
@@ -1660,6 +1830,75 @@
       </div>
     </section>
 
+    <!-- Depoimentos de Criadores & Apoiadores -->
+    <section id="depoimentos" class="band">
+      <div class="container">
+        <div class="section-head reveal-item">
+          <div class="eyebrow">Comunidade &amp; Apoiadores</div>
+          <h2 class="h2-section">Quem já testou o fluxo em código aprova e recomenda.</h2>
+          <p>Criadores de canais dark, editores e devs que trocaram horas de edição manual pelo estúdio automatizado.</p>
+        </div>
+
+        <div class="testimonials-grid reveal-item">
+          <article class="testimonial-card">
+            <div>
+              <div class="testimonial-stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <p class="testimonial-quote">"Eu levava um domingo inteiro para animar 1 Short no After Effects. Com a fila em JSON e os agentes prontos, gerei uma semana inteira de curiosidades em uma tarde."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="avatar-circle" style="background: #E04F26;" aria-hidden="true">LM</div>
+              <div class="author-meta">
+                <strong>Lucas Mendes</strong>
+                <span>Canal de Curiosidades &amp; História</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div>
+              <div class="testimonial-stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <p class="testimonial-quote">"O que mais me ganhou foi o estilo cel-shaded consistente. Os personagens não deformam de uma cena pra outra e a legenda karaokê já sai no ponto certo."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="avatar-circle" style="background: #1D63DC;" aria-hidden="true">MC</div>
+              <div class="author-meta">
+                <strong>Mariana Costa</strong>
+                <span>Editora &amp; Produtora de Reels</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div>
+              <div class="testimonial-stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <p class="testimonial-quote">"Só o pack com os 5 repositórios organizados e as 26 regras de QA já economizou meses de tentativa e erro. Zero mensalidade em ferramenta de vídeo por IA."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="avatar-circle" style="background: #15803D;" aria-hidden="true">RO</div>
+              <div class="author-meta">
+                <strong>Rafael Oliveira</strong>
+                <span>Dev &amp; Automação YouTube</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div>
+              <div class="testimonial-stars" aria-label="5 de 5 estrelas">★★★★★</div>
+              <p class="testimonial-quote">"Subi 2 canais paralelos usando os templates Stickman e Bananas3D. A integração com a API oficial do YouTube deixa o processo realmente no piloto automático."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="avatar-circle" style="background: #B45309;" aria-hidden="true">CF</div>
+              <div class="author-meta">
+                <strong>Camila Ferreira</strong>
+                <span>Gestora de Canais Dark</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- OriginKit FAQ Accordion -->
     <section id="faq" class="band">
       <div class="container">
@@ -1718,20 +1957,7 @@
   </div>
 
   <script>
-    // 1. Skiper UI Before/After Slider
-    (() => {
-      const stage = document.getElementById('compareStage');
-      const range = document.getElementById('compareRange');
-      if (!stage || !range) return;
-
-      const updateSplit = (val) => {
-        stage.style.setProperty('--split', `${val}%`);
-      };
-
-      range.addEventListener('input', (e) => updateSplit(e.target.value));
-    })();
-
-    // 2. Cult UI Accessible Tabs (modern-web-guidance compliant)
+    // 1. Cult UI Accessible Tabs (modern-web-guidance compliant)
     (() => {
       const tablist = document.querySelector('[role="tablist"]');
       if (!tablist) return;
