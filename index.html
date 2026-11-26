@@ -1023,6 +1023,129 @@
       opacity: 1;
       transform: none;
     }
+
+    /* Horizontal Catalog Carousel */
+    .catalog-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .catalog-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .catalog-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1.5px solid var(--ink);
+      background: var(--bg-card);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--ink);
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+
+    .catalog-nav-btn:hover {
+      background: var(--bg-surface);
+      transform: translate(-1px, -1px);
+    }
+
+    .catalog-nav-btn:active {
+      transform: translate(1px, 1px);
+    }
+
+    .catalog-track {
+      display: flex;
+      gap: 1.15rem;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scroll-padding-inline: 1rem;
+      padding-bottom: 0.9rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ink) transparent;
+    }
+
+    .catalog-track::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .catalog-track::-webkit-scrollbar-thumb {
+      background: var(--ink);
+      border-radius: 999px;
+    }
+
+    .catalog-track::-webkit-scrollbar-track {
+      background: rgba(23, 22, 20, 0.08);
+      border-radius: 999px;
+    }
+
+    .catalog-card {
+      flex: 0 0 min(82vw, 310px);
+      scroll-snap-align: start;
+      background: var(--bg-card);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 5px 5px 0 var(--ink);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .catalog-media {
+      position: relative;
+      background: #171614;
+      border-bottom: 1.5px solid var(--ink);
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .catalog-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .catalog-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.25rem 0.55rem;
+      border-radius: 6px;
+      background: rgba(250, 247, 242, 0.94);
+      color: var(--ink);
+      border: 1px solid var(--ink);
+    }
+
+    .catalog-body {
+      padding: 1rem 1.1rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      flex: 1;
+    }
+
+    .catalog-body h3 {
+      font-size: 1.06rem;
+      font-weight: 700;
+    }
+
+    .catalog-body p {
+      margin: 0;
+      font-size: 0.87rem;
+      color: var(--ink-muted);
+    }
   </style>
 </head>
 <body>
@@ -1040,6 +1163,7 @@
       </a>
 
       <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#catalogo">Catálogo</a>
         <a href="#antes-depois">Transformação</a>
         <a href="#arquitetura">Agentes &amp; Skills</a>
         <a href="#grade">Grade do Curso</a>
@@ -1114,6 +1238,139 @@
             <span class="tag">ERR-001 → 026</span>
             <span>QA automático + Lip-Sync determinístico</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo de Estilos em Rolagem -->
+    <section id="catalogo" class="band">
+      <div class="container">
+        <div class="catalog-header reveal-item">
+          <div class="section-head" style="margin-bottom: 0;">
+            <div class="eyebrow">Catálogo Real • 6 Modelos &amp; Packs</div>
+            <h2 class="h2-section">Estilos de vídeo que você vai dominar e baixar.</h2>
+            <p>Arraste para o lado e veja prévias reais do nosso estúdio cel-shaded e dos 5 repositórios incluídos no pack privado do curso.</p>
+          </div>
+          <div class="catalog-controls" aria-label="Controles do catálogo">
+            <button type="button" class="catalog-nav-btn" id="catalogPrev" aria-label="Rolar catálogo para a esquerda">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button type="button" class="catalog-nav-btn" id="catalogNext" aria-label="Rolar catálogo para a direita">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="catalog-track" id="catalogTrack" tabindex="0" aria-label="Catálogo de estilos de animação 2D e 3D">
+          <article class="catalog-card">
+            <div class="catalog-media">
+              <img src="assets/catalog/bananas-3d.gif" alt="Prévia animada do modelo Bananas3D Cel-Shaded" width="360" height="640" loading="lazy" />
+              <span class="catalog-tag">ESTÚDIO OPDC 3D</span>
+            </div>
+            <div class="catalog-body">
+              <h3>Cel-Shaded 3D (Principal)</h3>
+              <p>Personagem 3D com contorno ink, lip-sync, objetos 3D e legendas karaokê em PT-BR.</p>
+            </div>
+          </article>
+
+          <article class="catalog-card">
+            <div class="catalog-media">
+              <img src="assets/catalog/stickman-claude.gif" alt="Prévia Stickman Shorts estilo cinematográfico" width="480" height="360" loading="lazy" />
+              <span class="catalog-tag">STICKMAN SHORTS</span>
+            </div>
+            <div class="catalog-body">
+              <h3>Stickman Cinematográfico</h3>
+              <p>Cenas noturnas, câmera dinâmica e efeitos sonoros sincronizados via Remotion.</p>
+            </div>
+          </article>
+
+          <article class="catalog-card">
+            <div class="catalog-media">
+              <img src="assets/catalog/viral-showcase.gif" alt="Prévia Viral Short Videos AI" width="480" height="360" loading="lazy" />
+              <span class="catalog-tag">VIRAL SHORTS AI</span>
+            </div>
+            <div class="catalog-body">
+              <h3>Storytelling Automatizado</h3>
+              <p>Ganchos visuais de alta retenção sem precisar de GPU dedicada para renderizar.</p>
+            </div>
+          </article>
+
+          <article class="catalog-card">
+            <div class="catalog-media">
+              <img src="assets/catalog/motionforge-3d.gif" alt="Prévia MotionForge 3D com Three.js" width="480" height="360" loading="lazy" />
+              <span class="catalog-tag">MOTIONFORGE 3D</span>
+            </div>
+            <div class="catalog-body">
+              <h3>Motion 3D &amp; Three.js</h3>
+              <p>Objetos 3D, iluminação de estúdio e biblioteca com dezenas de estilos visuais.</p>
+            </div>
+          </article>
+
+          <article class="catalog-card">
+            <div class="catalog-media">
+              <img src="assets/catalog/stickman-freshco.gif" alt="Prévia Stickman narrativa de mistério" width="480" height="360" loading="lazy" />
+              <span class="catalog-tag">STICKMAN NARRATIVO</span>
+            </div>
+            <div class="catalog-body">
+              <h3>Histórias &amp; Curiosidades</h3>
+              <p>Templates prontos para canais dark de mistério, história e fatos curiosos.</p>
+            </div>
+          </article>
+
+          <article class="catalog-card">
+            <div class="catalog-media">
+              <img src="assets/catalog/viral-captions.gif" alt="Prévia legendas cinéticas" width="480" height="360" loading="lazy" />
+              <span class="catalog-tag">LEGENDAS CINÉTICAS</span>
+            </div>
+            <div class="catalog-body">
+              <h3>Tipografia de Retenção</h3>
+              <p>Animação palavra por palavra sincronizada ao ritmo da narração neural.</p>
+            </div>
+          </article>
+
+          <article class="catalog-card">
+            <div class="catalog-media">
+              <img src="assets/catalog/motionforge-styles.gif" alt="Prévia biblioteca de estilos MotionForge" width="480" height="360" loading="lazy" />
+              <span class="catalog-tag">100+ ESTILOS</span>
+            </div>
+            <div class="catalog-body">
+              <h3>Biblioteca de Presets</h3>
+              <p>Pacote de estilos prontos: editorial, tech, notícias, infográficos e reels.</p>
+            </div>
+          </article>
+
+          <article class="catalog-card">
+            <div class="catalog-media">
+              <img src="assets/catalog/stick-figure-sheet.jpg" alt="Sheet de cenas Stick Figure Shorts" width="600" height="450" loading="lazy" />
+              <span class="catalog-tag">STICK FIGURE 2D</span>
+            </div>
+            <div class="catalog-body">
+              <h3>Stick Figure Modular</h3>
+              <p>Personagens minimalistas expressivos para explicações rápidas e educativas.</p>
+            </div>
+          </article>
+
+          <article class="catalog-card">
+            <div class="catalog-media">
+              <img src="assets/catalog/kinetic-reel-sheet.jpg" alt="Sheet Kinetic Reel" width="600" height="450" loading="lazy" />
+              <span class="catalog-tag">MOTION TOOLS</span>
+            </div>
+            <div class="catalog-body">
+              <h3>Kinetic Reel &amp; Parallax</h3>
+              <p>Ferramentas avançadas de profundidade, recorte de camadas e ritmo musical.</p>
+            </div>
+          </article>
+
+          <article class="catalog-card">
+            <div class="catalog-media">
+              <img src="assets/catalog/painted-views.jpg" alt="Prévia animação estilo pintado multiângulo" width="600" height="450" loading="lazy" />
+              <span class="catalog-tag">PAINTED 2.5D</span>
+            </div>
+            <div class="catalog-body">
+              <h3>Animação Pintada 2.5D</h3>
+              <p>Múltiplos ângulos e expressões artísticas para vídeos autorais diferenciados.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1553,6 +1810,18 @@
         });
       });
     });
+
+    // 4. Horizontal Catalog Scroll Controls
+    (() => {
+      const track = document.getElementById('catalogTrack');
+      const prev = document.getElementById('catalogPrev');
+      const next = document.getElementById('catalogNext');
+      if (!track || !prev || !next) return;
+
+      const step = () => Math.min(track.clientWidth * 0.8, 340);
+      prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+      next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+    })();
   </script>
 </body>
 </html>
