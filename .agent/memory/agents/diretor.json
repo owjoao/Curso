@@ -1,0 +1,41 @@
+{
+  "agent_id": "opdc-diretor",
+  "role": "Showrunner & Diretor Executivo de Produção",
+  "channel": "O Porquê das Coisas",
+  "memory_version": "1.0.0",
+  "last_updated": "2026-11-12T02:20:00-03:00",
+  "mission": "Receber ideias de episódios (curtos 60s ou longos 3-10+ min), planejar o arco audiovisual e acionar sequencialmente/em paralelo os agentes especialistas corretos até a aprovação final do QA.",
+  "roster_routing": {
+    "story_and_cues": "opdc-roteirista",
+    "scenery_props_vfx": "opdc-cenario-arte",
+    "rigging_poses_camera": "opdc-rig-camera",
+    "tts_sfx_music_render": "opdc-audio-render",
+    "audit_blackdetect_vision": "opdc-qa-curador"
+  },
+  "production_gates": [
+    "Gate 1: Roteiro científico + cue timeline + lista de cenários e macro-zooms (opdc-roteirista)",
+    "Gate 2: Cenários multiplano + VFX + Rig 2D + Camera Track com cross-dissolve (opdc-cenario-arte + opdc-rig-camera em paralelo)",
+    "Gate 3: Edge-TTS -> cue_timings.json -> sync exato no episódio -> áudio ducked -> render MP4 sem pipe deadlock (opdc-audio-render)",
+    "Gate 4: Playwright 0 erros + ffprobe + blackdetect + inspeção multimodal de frames do MP4 (opdc-qa-curador)"
+  ],
+  "learned_heuristics": [
+    "Em vídeos de 60s com macro-zoom e troca de ambiente (v2), dividir a explicação entre laboratório, ondas solares/espaço cósmico e ambiente aberto multiplica a clareza visual.",
+    "Para vídeos longos (ex: 10 min), sempre arquitetar em capítulos independentes de ~60s concatenados via FFmpeg para evitar perda de memória/render e permitir re-render modular.",
+    "Nunca encerrar um episódio só com teste do player HTML: exigir auditoria nos frames extraídos do .mp4 final."
+  ],
+  "episodes_produced": [
+    {
+      "id": "cristal_arco_iris_v1",
+      "duration_sec": 60,
+      "output": "renders/episodio_01_cristal_arco_iris_60s.mp4",
+      "status": "PASSED"
+    },
+    {
+      "id": "cristal_arco_iris_v2",
+      "duration_sec": 60,
+      "features": ["3_scenes", "macro_zooms", "cross_dissolve", "pt_br_tts_sync"],
+      "output": "renders/episodio_01_cristal_arco_iris_v2_60s.mp4",
+      "status": "PASSED"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "agent_id": "opdc-audio-render",
+  "role": "Designer de Som, Dublagem Neural & Engenheiro de Render",
+  "memory_version": "1.0.0",
+  "last_updated": "2026-11-12T02:20:00-03:00",
+  "tts_and_audio_stack": {
+    "voice": "pt-BR-AntonioNeural (edge-tts)",
+    "timing_contract": "cue_timings.json sincronizado diretamente no array cues do episódio para talkActive e legendas exatas",
+    "music_ducking": "0.18x durante fala ativa, 0.45x em pausas, mixado com pads e chimes suaves via numpy + ffmpeg AAC 192k"
+  },
+  "critical_engineering_lessons": [
+    "DEADLOCK DE PIPE WINDOWS: Nunca usar stderr=subprocess.PIPE ao enviar milhares de PNGs no stdin do FFmpeg; o buffer de 64KB trava. Sempre redirecionar stderr para um arquivo de log com -loglevel warning.",
+    "ERR-007 — Sound Design Sísmico / Vulcânico: Em animações de aceleração e quebra de teto, compor camadas de sub-bass (rumble subterrâneo 38Hz–50Hz) subindo em volume junto com o tremor visual, um riser harmônico e sincronizar a explosão acústica (boom + shatter crack) exatamente no frame em que a linha rompe o teto.",
+    "BRAVE HEADLESS PARALELO: Abrir Playwright com p.chromium.launch(executable_path=..., headless=True) SEM user-data-dir compartilhado para não colidir com o Brave aberto pelo usuário.",
+    "SYNC DE ÚLTIMA FALA: Medir duração real de cada fala antes de travar os timestamps para garantir que o último cue nunca seja cortado em t=60.0s.",
+    "ESCALA DE VÍDEOS LONGOS (10+ min): Renderizar capítulos independentes (~1800 frames por minuto) e concatenar com ffmpeg -f concat -safe 0 -c copy."
+  ]
+}

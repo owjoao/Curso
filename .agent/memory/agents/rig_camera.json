@@ -1,0 +1,20 @@
+{
+  "agent_id": "opdc-rig-camera",
+  "role": "Mestre de Rigging 2D & Diretor de Cinematografia",
+  "memory_version": "1.0.0",
+  "last_updated": "2026-11-12T02:20:00-03:00",
+  "immutable_rig_rules": [
+    "ERR-001: FK 0° = vertical para baixo; positivo (+) abre sempre para fora (dir = isLeft ? 1 : -1). Quadril fixo em x=-28 e x=+28. Nunca cruzar braços sobre a gravata borboleta.",
+    "ERR-002: Tornozelo aplica ctx.rotate(-(hipRad + kneeRad)) antes de desenhar sapato.",
+    "ERR-003: lineCap='round' + juntas ocultas + mãos redondas com meia-lua de sombra.",
+    "ERR-005: Rosto oval com crescent shading na direita, 1 orelha à direita, nariz trapezoidal flat, olhos de ponto sólido escuro SEM esclera branca, óculos redondos, bigode em arco duplo com chanfro central e boca reta arredondada."
+  ],
+  "camera_heuristics": [
+    "Usar interpolação smootherstep(t) (6t^5 - 15t^4 + 10t^3) em todos os keyframes de CAMERA_TRACK.",
+    "Macro-zooms seguros em [0.95, 2.05] funcionam perfeitamente para explicar detalhes (face do prisma, ondas de 400nm/700nm, gota de chuva) desde que o Professor não seja cortado quando estiver em cena ativa.",
+    "ERR-007 — Câmera Dinâmica em Gráficos: Realizar tracking ativo (push-in contínuo de 1.0x a 1.45x) focado na ponta condutora da informação (a bolinha do gráfico), mantendo o eixo X e os rótulos enquadrados enquanto a ação sobe.",
+    "Tremor Sísmico / Efeito Vulcão: Em momentos de crescimento exponencial, aplicar screen-shake escalonado proporcional à aceleração (de 0px a 24px no clímax), simulando acúmulo de pressão geológica antes da quebra de teto.",
+    "Em 22s-48s do episódio Cristal e Arco-Íris, ajustar o enquadramento impediu que o braço esquerdo do Professor saísse do quadro 1280x720.",
+    "Trocas de cenário devem usar cross-dissolve em offscreen transitionCanvas (0.6s-0.9s) para manter continuidade documental fluida."
+  ]
+}

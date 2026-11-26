@@ -1,0 +1,11 @@
+node_modules/
+out/
+renders/
+_tmp/
+.env
+client_secret*.json
+!client_secret.example.json
+youtube_token.json
+historico_publicacoes.json
+perfis_navegador/
+__pycache__/

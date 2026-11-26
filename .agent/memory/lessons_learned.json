@@ -1,0 +1,168 @@
+{
+  "version": "2.0.0",
+  "project": "o-porque-das-coisas",
+  "engine": "Studio25DEngine (Three.js 2.5D + Protocolo ARGON)",
+  "immutable_rules": [
+    {
+      "id": "ERR-001",
+      "topic": "Cinemática dos Membros",
+      "rule": "0° aponta estritamente para baixo (vertical). Valores positivos (+) SEMPRE abrem braços e pernas para fora da silhueta do corpo (dir = isLeft ? 1 : -1). Nunca cruzar braços sobre a gravata borboleta nem fechar pernas em X (quadril fixo em x = -28 e x = +28)."
+    },
+    {
+      "id": "ERR-002",
+      "topic": "Alinhamento de Sapatos",
+      "rule": "Aplicar sempre ctx.rotate(-(hipRad + kneeRad)) no tornozelo antes de desenhar o sapato para manter a sola 100% paralela ao chão."
+    },
+    {
+      "id": "ERR-003",
+      "topic": "Juntas e Mãos",
+      "rule": "Usar ctx.lineCap = 'round' em braços e pernas para evitar frestas ao dobrar. Mãos são círculos perfeitos com meia-lua de sombra."
+    },
+    {
+      "id": "ERR-004",
+      "topic": "Viewport 16:9 Seguro",
+      "rule": "Renderizar sempre em resolução virtual fixa 1280x720 com scale proporcional à janela, chão ancorado em 84% da altura (y = 605) e loop requestAnimationFrame ativo."
+    },
+    {
+      "id": "ERR-005",
+      "topic": "Padrão Facial Ampulheta",
+      "rule": "Rosto oval com sombra curva em meia-lua na direita (crescent shading), apenas uma orelha visível à direita (giro 3/4), nariz trapezoidal vertical flat, olhos de ponto sólido escuro SEM esclera branca, óculos redondos de aro fino, bigode em arco duplo com chanfro central e boca em linha reta horizontal arredondada."
+    },
+    {
+      "id": "ERR-006",
+      "topic": "Separação Óptica & Legendas no Palco",
+      "rule": "Feixes de luz VFX devem partir da fonte óptica no palco sem cruzar o rosto do professor nem os textos da lousa; legendas ficam contidas na faixa do piso abaixo de y = 605 sem cobrir os sapatos."
+    },
+    {
+      "id": "ERR-007",
+      "topic": "Câmera Cinematográfica Dinâmica & Tracking de Infográficos",
+      "rule": "Gráficos e infográficos nunca devem ser estáticos. A câmera deve usar tracking ativo (push-in contínuo de 1.0x a 1.45x acompanhando a ponta guia/bolinha de dados). A ponta deve exibir métrica dinâmica em tempo real (ex: % em subida) e efeitos de pressão escalonada (screen-shake sísmico/vulcânico proporcional à aceleração da curva), com o estouro/erupção ocorrendo rigorosamente no frame exato em que a linha física cruza a borda do teto, sem adiantamento."
+    },
+    {
+      "id": "ERR-008",
+      "topic": "Harmonia Estética Híbrida (IA + Canvas 2.5D Ampulheta)",
+      "rule": "PROIBIDO gerar fotos realistas genéricas, 3D brilhoso descontextualizado ou rostos fotográficos que colidam com o Professor 2D. Assets e cenários gerados por IA devem seguir a BÍBLIA VISUAL: iluminação cel-shade editorial / pintura digital mate (matte painting) com paleta de tons quentes de época (latão envelhecido, bronze, mogno, terra roxa, nanquim). Elementos que recebem mecânica dinâmica (ex: mostradores, ponteiros, janelas de trens, lupas) devem ser gerados SEM as partes móveis centrais, permitindo que o Canvas 2D/Three.js acople a cinemática com total fluidez matemática e consistência de estilo."
+    },
+    {
+      "id": "ERR-010",
+      "topic": "Protocolo ARGON - Blindagem Geométrica Quádrupla",
+      "rule": "1) Braçadeira 100% contida na largura da manga (sem flutuar fora do braço). 2) Respiro visível de pele >= 0.07 unidades entre a base do nariz (y=1.37) e topo do bigode (y=1.30). 3) Gancho da calça (Layer 1.4) rigorosamente atrás da barra da túnica (Layer 2.0, y=-1.25 cobrindo y=-1.55). 4) Orelhas e costeletas com mirrorX: true, cobertas organicamente pela franja (Layer 5.5)."
+    },
+    {
+      "id": "ERR-011",
+      "topic": "Proporção Corporal Padrão Universal (6.5 Cabeças)",
+      "rule": "Proibido criar personagens atarracados ou estilo 'chibi/quadrado' (ratio < 6 cabeças). Todo humanoide adulto do estúdio deve utilizar a escala estatuária de 6.5 cabeças (altura total ~7.10 unidades, cabeça height 1.25, queixo em y=1.05 e botas longas de montaria de -2.55 a -4.80)."
+    },
+    {
+      "id": "ERR-012",
+      "topic": "Caimento Natural dos Ombros (Anti-Quina de 90°)",
+      "rule": "Proibido cortar o topo da manga em linha horizontal reta formando quinas artificiais de 90°. A manga do deltoide superior deve utilizar curva convexa orgânica com caimento suave contínuo de 25° a partir do colarinho."
+    },
+    {
+      "id": "ERR-013",
+      "topic": "Fábrica Canônica de Humanoides (buildHumanoidCharacter)",
+      "rule": "Proibido recriar esqueletos ou coordenadas anatômicas do zero para novos personagens. Todo personagem deve ser instanciado via Studio25DEngine.prototype.buildHumanoidCharacter, reaproveitando 100% da anatomia e modificando apenas figurino (outfit) e traços individuais (features)."
+    },
+    {
+      "id": "ERR-014",
+      "topic": "Prevenção de Deadlock de Pipe no Windows",
+      "rule": "PROIBIDO usar stderr=subprocess.PIPE ao transferir frames contínuos para o FFmpeg no Windows (o limite de 64KB do buffer trava a renderização após ~100 frames). Usar sempre stderr=open('ffmpeg_render.log', 'w') e -loglevel warning."
+    },
+    {
+      "id": "ERR-015",
+      "topic": "Auditoria Inquisitiva Obrigatória de Integridade Visual e Anatômica",
+      "rule": "Nenhum render é aprovado sem submissão ao Questionário Inquisitivo de 32 Perguntas Críticas pelo opdc-qa-curador. Ficam estritamente proibidos e causam reprovação sumária: 1) Peças desconectadas ou levitando soltas; 2) Fusões anômalas de cabelo virando barba ou bigode colado nas narinas (< 0.07 unidades de pele); 3) Mãos invertidas ou polegares apontando para baixo; 4) Elemento-chave cortado pelas bordas da tela 9:16; 5) Giros físicos desconexos; 6) Holds congelados sem creeping push-in (0.15% a 0.35%/f)."
+    },
+    {
+      "id": "ERR-016",
+      "topic": "Proporções Relativas Canônicas, Escala de Props e Macro Cinematográfico",
+      "rule": "PROIBIDO modelar props (moedas, xícaras, canetas, relógios) com escala de escudo ou prato de jantar para tentar forçar detalhes. A proporção física do objeto em relação ao personagem deve ser biologicamente crível: diâmetro de moeda = 10% a 18% da altura da cabeça (cabe confortavelmente na palma/entre os dedos); xícara = 20% a 25% da cabeça; mesa na altura da cintura/cotovelo (~45% da altura total). Detalhes milimétricos (ex: 96 ranhuras da moeda) DEVEM SER REVELADOS EXCLUSIVAMENTE POR MACRO-ZOOM DE CÂMERA (aproximação Z ou lente macro focal), preservando a escala física natural do prop no mundo 3D."
+    },
+    {
+      "id": "ERR-017",
+      "topic": "Tracking Cinematográfico Contínuo do Objeto Principal (Zero Perda de Alvo)",
+      "rule": "PROIBIDO desacoplar a câmera de objetos em movimento rápido (moedas arremessadas, veículos, projéteis) utilizando curvas de interpolação divergentes da física real do objeto, o que faz a moeda sair da tela ou ser perdida aos 2 segundos de vídeo. A câmera DEVE utilizar tracking dinâmico com camera.lookAt vinculado diretamente à coordenada física do objeto em tempo real, mantendo o elemento-chave centralizado e 100% contido dentro da safe zone 9:16 em todo o percurso."
+    },
+    {
+      "id": "ERR-018",
+      "topic": "Proibição de Bonecos Improvisados e Obrigatoriedade da Fábrica Canônica de Humanoides",
+      "rule": "TERMINANTEMENTE PROIBIDO desenhar ou modelar personagens improvisados usando primitivas geométricas avulsas (CircleGeometry, PlaneGeometry soltas para cabeça/olhos). Todo personagem humanoide no estúdio DEVE ser instanciado via Fábrica Canônica Universal (UniversalHumanoidFactory.js / buildHumanoidCharacter do Studio25DEngine), que carrega a anatomia padrão de 6.5 cabeças do Protocolo ARGON com todas as articulações hierárquicas. Para trocar de personagem, modifica-se apenas a skin (outfit, features e palette), garantindo consistência visual profissional em 100% das cenas sem que o usuário precise solicitar."
+    },
+    {
+      "id": "ERR-019",
+      "topic": "Blindagem de Rigs Hierárquicos (Sem Offsets Duplos) e Selamento Hermético de Cintura/Tronco",
+      "rule": "1) Em grupos com pivô próprio (armLeftGroup, armRightGroup em x=±0.72, y=0.65), as malhas locais devem ser modeladas a partir de (0,0) SEM subtrações adicionais de offset na fábrica, sob pena de colapsar os membros para o centro do tórax (x=0). 2) O tronco DEVE possuir a geometria de base completa (tunicBody em Layer 2.0) estendendo-se dos ombros (x=±0.68) até a barra inferior (y=-1.35, x=±0.60), cobrindo integralmente o topo da calça (iniciada em y=-1.15) com sobreposição estanque mínima de 0.15 unidades e cinto/waistband de transição, eliminando fendas laterais ou visual de corpo decepado."
+    },
+    {
+      "id": "ERR-020",
+      "topic": "Regra de Ouro do Gancho ('Por que...')",
+      "rule": "Todo título, legenda e primeira frase do roteiro devem começar diretamente com 'Por que...' ou induzir imediatamente o público a se perguntar 'Por quê?' nos primeiros 3 segundos."
+    },
+    {
+      "id": "ERR-021",
+      "topic": "Animação 100% Determinística no Remotion (Zero +=)",
+      "rule": "Como o Remotion renderiza frames fora de ordem em paralelo (Concurrency 6x), é PROIBIDO usar incremento acumulado (+=) em rotações ou posições. Toda animação deve ser calculada deterministicamente a partir de t = f / 30."
+    },
+    {
+      "id": "ERR-022",
+      "topic": "Geometria Fechada para Props Orgânicos 3D",
+      "rule": "Proibido usar TubeGeometry com pontas abertas para frutas ou props orgânicos (ex: bananas). Usar CylinderGeometry fechado com deformação de vértices afilando as pontas, curvatura em arco e cabinho/extremidade fechados."
+    },
+    {
+      "id": "ERR-023",
+      "topic": "Escalares de Pose no Char 3D (chars.ts)",
+      "rule": "Em src/videos/dumont3d/chars.ts, armL, armR, fwdL, fwdR, elbowL e elbowR do tipo Pose são números escalares em radianos — NUNCA passar arrays [x, y, z], pois gera NaN na rotação e oculta os braços."
+    },
+    {
+      "id": "ERR-024",
+      "topic": "Sincronismo Labial Real & faceMat.needsUpdate",
+      "rule": "O Lip-Sync deve ler os intervalos reais start/end de audio/*_words.json, manter face: 'talk' durante toda a fala (não sobrescrever com 'shock'/'grin' enquanto houver palavra ativa) e setar this.faceMat.needsUpdate = true ao trocar o CanvasTexture."
+    },
+    {
+      "id": "ERR-025",
+      "topic": "Enquadramento 9:16, Olhar para Câmera e Tipografia Limpa",
+      "rule": "Em 9:16 (fov vertical 40, FOV horizontal ~23.4°), planos com 2 elementos exigem z >= 4.2 para evitar cortes laterais. O Professor deve girar corpo e cabeça em direção à câmera (Math.atan2). Título exibido apenas nos primeiros ~2.3s com fade-out (sem caixa pesada) e legendas estilo karaokê (3 palavras, sem caixa, contorno escuro e palavra ativa em amarelo), sem emojis não suportados por fontes do sistema."
+    },
+    {
+      "id": "ERR-026",
+      "topic": "Render Remotion Windows (ANGLE) & API Oficial YouTube",
+      "rule": "Renderizar Remotion 3D no Windows sempre com --gl=angle --browser-executable=\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\". Publicação no YouTube deve usar scripts/youtube_api_uploader.py (youtube_token.json) exclusivamente no canal seu_canal_youtube (@seu_canal_youtube, ID SEU_CHANNEL_ID) — nunca no OutroCanal ou seu_perfil."
+    }
+  ],
+  "audit_history": [
+    {
+      "episode": "bananas_radioativas_3d",
+      "timestamp": "2026-11-26T02:39:30-03:00",
+      "result": "PASSED",
+      "fixes_applied": [
+        "Substituído TubeGeometry aberto por CylinderGeometry afilado com curvatura orgânica e cabinho para as bananas 3D.",
+        "Removido += na animação do átomo Potássio-40 e adicionados elétrons orbitando deterministicamente.",
+        "Removida caixa pesada do título (agora apenas nos primeiros 2.3s com fade-out) e aplicadas legendas karaokê sem caixa.",
+        "Expandido jogo de câmera para 7 planos dinâmicos com enquadramento 9:16 seguro sem cortes laterais.",
+        "Corrigidos braços do Char 3D de arrays para escalares em radianos.",
+        "Adicionado eye-tracking/rotação para a câmera, pulinho de surpresa, gestos e aceno final.",
+        "Conectado Lip-Sync real aos timestamps de audio/bananas_radioativas_words.json com faceMat.needsUpdate = true."
+      ]
+    },
+    {
+      "episode": "cristal_arco_iris",
+      "timestamp": "2026-11-11T23:37:30-03:00",
+      "result": "PASSED",
+      "fixes_applied": [
+        "Movida fonte luminosa para tripé óptico em x=525 evitando cruzamento de feixe sobre o professor e sobre a lousa.",
+        "Ajustado CAMERA_TRACK em 22s-48s para manter o braço esquerdo do professor integralmente dentro do enquadramento 1280x720.",
+        "Compactada altura das legendas no player para permanecerem abaixo dos sapatos em y=605.",
+        "Elevados os raios refratados no infográfico da gota d'água para não cruzar o texto amarelo da lousa."
+      ]
+    }
+  ],
+  "lessons": [
+    {
+      "code": "ERR-009",
+      "name": "Padrão Canônico Versalhes/Ampulheta para Rigging de Personagens Históricos",
+      "description": "Proibido improvisar formas geométricas primitivas (círculos e blocos sem feições). Todos os personagens históricos devem ser instanciados via HistoricalCharacterRig2D com anatomia completa estilo Versalhes: cabeças superelípticas com corte de mandíbula, óculos de aro fino, penteados de época, ternos diplomáticos com lapelas peak lapel afiadas, colarinhos duros, gravatas de seda, mãos articuladas e sombreamento cel-shade em nanquim ameixa escuro (#241726). Os cenários devem seguir a arquitetura simétrica da Galeria de Versalhes com planos múltiplos (FG, MG, BG) e toalha de conferência verde esmeralda nobre (#20362a).",
+      "severity": "CRITICAL",
+      "status": "CANONICAL_ENFORCED"
+    }
+  ]
+}

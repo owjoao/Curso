@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <title>Estúdio Autônomo 2D &amp; 3D • Curso + Código-Fonte Completo | Kiwify</title>
+  <meta name="description" content="Aprenda e baixe o estúdio completo de animação 2D e 3D cel-shaded com Remotion, Three.js, 7 agentes de IA, voz neural PT-BR e upload automático para Shorts, Reels e TikTok." />
+  <meta name="keywords" content="curso animação 2d 3d, remotion, three.js, cel shading, videos curtos ia, youtube shorts automatizado, estúdio autônomo, kiwify" />
+  <meta name="author" content="Estúdio Autônomo OPDC" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#FAF7F2" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Estúdio Autônomo 2D &amp; 3D • Crie Vídeos Animados Virais em Código" />
+  <meta property="og:description" content="Curso prático + modelo completo pronto para rodar: 4 templates 2D/3D, 7 agentes especialistas, voz neural em PT-BR e publicação automática." />
+  <meta property="og:image" content="assets/hero-studio.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Estúdio Autônomo 2D &amp; 3D • Curso + Template Completo" />
+  <meta name="twitter:description" content="Transforme ideias de roteiro em animações 2D e 3D cel-shaded 9:16 a 60fps." />
+  <meta name="twitter:image" content="assets/hero-studio.jpg" />
+
+  <!-- Schema.org Course -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Estúdio Autônomo de Animação 2D & 3D (Remotion + Three.js + Agentes IA)",
+    "description": "Curso completo com código-fonte pronto do modelo Estúdio Autônomo 2D/3D para produção de Shorts, Reels e TikTok em formato vertical 9:16 com narração neural PT-BR e legendas karaokê.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Estúdio Autônomo OPDC"
+    },
+    "offers": {
+      "@type": "Offer",
+      "category": "Paid",
+      "priceCurrency": "BRL",
+      "price": "197.00",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- GSAP ScrollTrigger -->
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --bg-paper: #FAF7F2;
+      --bg-surface: #F2ECE1;
+      --bg-card: #FFFFFF;
+      --ink: #171614;
+      --ink-muted: #57524A;
+      --ink-soft: #7A7368;
+      --border: rgba(23, 22, 20, 0.12);
+      --border-strong: rgba(23, 22, 20, 0.24);
+      --accent: #E04F26;
+      --accent-hover: #C83E17;
+      --accent-soft: rgba(224, 79, 38, 0.10);
+      --blue: #1D63DC;
+      --blue-soft: rgba(29, 99, 220, 0.10);
+      --green: #15803D;
+      --green-soft: rgba(21, 128, 61, 0.11);
+      --amber: #B45309;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow-card: 0 12px 34px -12px rgba(23, 22, 20, 0.10);
+      --shadow-ink: 4px 4px 0px #171614;
+      --font-display: 'Outfit', system-ui, sans-serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --container: 1180px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-paper);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
+    body {
+      margin: 0;
+      padding-bottom: 84px;
+      overflow-x: clip;
+      line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      body { padding-bottom: 0; }
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 2rem, var(--container));
+      margin-inline: auto;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      margin: 0;
+      letter-spacing: -0.025em;
+      line-height: 1.08;
+    }
+
+    .h1-hero {
+      font-size: clamp(2.15rem, 1.35rem + 3.2vw, 3.85rem);
+      font-weight: 800;
+    }
+
+    .h1-hero .light-weight {
+      font-weight: 400;
+      color: var(--ink-muted);
+    }
+
+    .h2-section {
+      font-size: clamp(1.75rem, 1.25rem + 2vw, 2.75rem);
+      font-weight: 800;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(224, 79, 38, 0.24);
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+    }
+
+    /* Cult UI Shimmer Button */
+    .shimmer-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.95rem 1.65rem;
+      border-radius: 12px;
+      border: 2px solid var(--ink);
+      box-shadow: var(--shadow-ink);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .shimmer-btn:hover {
+      background: var(--accent-hover);
+      transform: translate(-1px, -1px);
+      box-shadow: 6px 6px 0px #171614;
+    }
+
+    .shimmer-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px #171614;
+    }
+
+    .shimmer-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.34) 50%, transparent 75%);
+      transform: translateX(-120%);
+      pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .shimmer-btn::after {
+        animation: shimmer-sweep 3.4s ease-in-out infinite;
+      }
+    }
+
+    @keyframes shimmer-sweep {
+      0%, 55% { transform: translateX(-120%); }
+      100% { transform: translateX(130%); }
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.4rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-strong);
+      background: var(--bg-card);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: var(--ink);
+      transition: background-color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-surface);
+      border-color: var(--ink);
+    }
+
+    /* Header & Topbar */
+    .topbar {
+      background: var(--ink);
+      color: #FAF7F2;
+      font-size: 0.82rem;
+      padding: 0.5rem 1rem;
+      text-align: center;
+    }
+
+    .topbar strong {
+      color: #FDBA74;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(250, 247, 242, 0.90);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 70px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--ink);
+      color: var(--bg-paper);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 2px solid var(--ink);
+      box-shadow: 2px 2px 0 var(--accent);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    @media (min-width: 900px) {
+      .nav-links { display: flex; }
+    }
+
+    .header-cta {
+      padding: 0.62rem 1.15rem;
+      font-size: 0.88rem;
+      box-shadow: 3px 3px 0 #171614;
+    }
+
+    /* Hero */
+    .hero {
+      padding-block: clamp(2.5rem, 5vw, 4.75rem);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 3.25rem;
+      }
+    }
+
+    .hero-lead {
+      font-size: clamp(1.02rem, 0.96rem + 0.35vw, 1.18rem);
+      color: var(--ink-muted);
+      margin: 1.15rem 0 1.5rem;
+      max-width: 56ch;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      padding: 0.42rem 0.85rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .hero-proof {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--border-strong);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 0.86rem;
+      color: var(--ink-muted);
+    }
+
+    .hero-proof strong {
+      color: var(--ink);
+    }
+
+    .hero-media {
+      position: relative;
+    }
+
+    .studio-frame {
+      background: var(--bg-card);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-lg);
+      padding: 0.75rem;
+      box-shadow: 8px 8px 0px var(--ink);
+    }
+
+    .studio-frame-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.25rem 0.4rem 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 0.38rem;
+    }
+
+    .window-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid var(--ink);
+    }
+
+    .studio-frame img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .floating-spec {
+      position: absolute;
+      bottom: -16px;
+      left: 16px;
+      background: var(--ink);
+      color: #FAF7F2;
+      padding: 0.7rem 1rem;
+      border-radius: 12px;
+      border: 2px solid var(--bg-paper);
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .floating-spec .tag {
+      background: var(--accent);
+      color: #FFF;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    /* Section Spacing */
+    section.band {
+      padding-block: clamp(3rem, 6vw, 5rem);
+    }
+
+    section.band-surface {
+      background: var(--bg-surface);
+      border-block: 1px solid var(--border);
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 2.25rem;
+    }
+
+    .section-head p {
+      color: var(--ink-muted);
+      margin: 0.75rem 0 0;
+      font-size: 1.03rem;
+    }
+
+    /* Skiper UI Before / After Slider */
+    .compare-shell {
+      background: var(--bg-card);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius-lg);
+      padding: clamp(1rem, 2.5vw, 1.5rem);
+      box-shadow: var(--shadow-ink);
+    }
+
+    .compare-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1.5px solid var(--ink);
+      user-select: none;
+      touch-action: pan-y;
+      --split: 52%;
+    }
+
+    .compare-stage img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .compare-after-layer {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(0 0 0 var(--split));
+    }
+
+    .compare-label {
+      position: absolute;
+      top: 14px;
+      z-index: 3;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.7rem;
+      border-radius: 8px;
+      border: 1.5px solid var(--ink);
+      background: rgba(250, 247, 242, 0.94);
+      color: var(--ink);
+      pointer-events: none;
+    }
+
+    .compare-label.before { left: 14px; }
+    .compare-label.after {
+      right: 14px;
+      background: var(--ink);
+      color: #FAF7F2;
+    }
+
+    .compare-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--split);
+      width: 3px;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 1.5px var(--ink);
+      transform: translateX(-50%);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .compare-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #FFFFFF;
+      border: 2.5px solid var(--ink);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .compare-range {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: ew-resize;
+      z-index: 5;
+    }
+
+    .compare-caption {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+    }
+
+    /* Cult UI Accessible Tabs (modern-web-guidance compliant) */
+    .tabs-wrap {
+      margin-top: 1.5rem;
+    }
+
+    .tablist {
+      display: flex;
+      overflow-x: auto;
+      gap: 0.35rem;
+      border-bottom: 1.5px solid var(--border-strong);
+      scroll-snap-type: inline proximity;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+
+    .tablist::-webkit-scrollbar { display: none; }
+
+    .tablist [role="tab"] {
+      position: relative;
+      flex: none;
+      scroll-snap-align: start;
+      background: transparent;
+      border: 0;
+      padding: 0.9rem 1.2rem;
+      font-family: var(--font-display);
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.18s ease;
+    }
+
+    .tablist [role="tab"]:hover {
+      color: var(--ink);
+    }
+
+    .tablist [role="tab"][aria-selected="true"] {
+      color: var(--ink);
+    }
+
+    .tablist [role="tab"][aria-selected="true"]::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 -1.5px;
+      border-block-end: 3px solid var(--accent);
+    }
+
+    .tab-panels {
+      display: grid;
+      margin-top: 1.5rem;
+    }
+
+    .tab-panels > [role="tabpanel"] {
+      grid-area: 1 / 1;
+    }
+
+    /* Child card holds padding/bg/border per modern-web-guidance hidden=until-found rule */
+    .panel-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--ink);
+      border-radius: var(--radius-md);
+      padding: clamp(1.25rem, 3vw, 2rem);
+      box-shadow: var(--shadow-card);
+    }
+
+    .bento-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .bento-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+      .bento-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+      .bento-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .mini-card {
+      background: var(--bg-paper);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem;
+    }
+
+    .mini-card .code-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      background: var(--blue-soft);
+      color: var(--blue);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      margin-bottom: 0.6rem;
+    }
+
+    .mini-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .mini-card p {
+      margin: 0;
+      font-size: 0.89rem;
+      color: var(--ink-muted);
+    }
+
+    /* OriginKit Comparison Matrix */
+    .matrix-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 820px) {
+      .matrix-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .matrix-col {
+      border-radius: var(--radius-md);
+      padding: clamp(1.35rem, 3vw, 2rem);
+      border: 1.5px solid var(--ink);
+    }
+
+    .matrix-col.bad {
+      background: var(--bg-card);
+      opacity: 0.92;
+    }
+
+    .matrix-col.good {
+      background: #FFFDF9;
+      box-shadow: 6px 6px 0 var(--ink);
+    }
+
+    .matrix-col h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .matrix-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .matrix-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+    }
+
+    .icon-x, .icon-ok {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.78rem;
+      margin-top: 2px;
+    }
+
+    .icon-x {
+      background: rgba(220, 38, 38, 0.12);
+      color: #B91C1C;
+    }
+
+    .icon-ok {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    /* Curriculum & Kiwify Offer */
+    .curriculum-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .curriculum-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1060px) {
+      .curriculum-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .module-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .module-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .module-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .module-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+    }
+
+    .offer-box {
+      background: var(--ink);
+      color: #FAF7F2;
+      border-radius: var(--radius-lg);
+      padding: clamp(1.75rem, 4vw, 3rem);
+      border: 2px solid var(--ink);
+      box-shadow: 10px 10px 0 var(--accent);
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (min-width: 880px) {
+      .offer-box {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    .offer-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0 0;
+      display: grid;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+      color: #E5E0D8;
+    }
+
+    .offer-list li::before {
+      content: "✓ ";
+      color: #4ADE80;
+      font-weight: 700;
+    }
+
+    .price-panel {
+      background: #FAF7F2;
+      color: var(--ink);
+      border-radius: var(--radius-md);
+      padding: 1.65rem;
+      border: 2px solid #FAF7F2;
+    }
+
+    .price-old {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      text-decoration: line-through;
+    }
+
+    .price-main {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 1.5rem + 1.8vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin: 0.25rem 0;
+    }
+
+    .price-cash {
+      font-size: 0.92rem;
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .guarantee-note {
+      margin-top: 0.9rem;
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      text-align: center;
+    }
+
+    /* OriginKit FAQ Accordion (modern-web-guidance <details> pattern) */
+    .accordion {
+      display: grid;
+      gap: 0.75rem;
+      max-width: 820px;
+    }
+
+    .accordion details {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      padding: 0 1.25rem;
+    }
+
+    .accordion summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.1rem 0;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.03rem;
+      cursor: pointer;
+    }
+
+    .accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion summary::before {
+      content: "";
+      inline-size: 1rem;
+      block-size: 1rem;
+      flex-shrink: 0;
+      background-color: var(--accent);
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat center / contain;
+      rotate: -90deg;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .accordion summary::before {
+        transition: rotate 0.2s ease;
+      }
+    }
+
+    .accordion details[open] > summary::before {
+      rotate: 0deg;
+    }
+
+    .accordion details::details-content {
+      interpolate-size: allow-keywords;
+      overflow: clip;
+      contain: layout;
+    }
+
+    .accordion details:not([open])::details-content {
+      block-size: 0;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .accordion details::details-content {
+        transition: block-size 0.28s ease-in-out, content-visibility 0.28s ease-in-out;
+        transition-behavior: allow-discrete;
+      }
+    }
+
+    .faq-body {
+      padding-bottom: 1.15rem;
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding-block: 2.25rem;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    /* Mobile Conversion Dock */
+    .mobile-dock {
+      position: fixed;
+      inset: auto 0 0 0;
+      z-index: 50;
+      background: rgba(250, 247, 242, 0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1.5px solid var(--ink);
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-dock { display: none; }
+    }
+
+    .mobile-dock-price {
+      font-family: var(--font-display);
+      line-height: 1.15;
+    }
+
+    .mobile-dock-price small {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+
+    .mobile-dock-price strong {
+      font-size: 1.05rem;
+    }
+
+    .mobile-dock .shimmer-btn {
+      padding: 0.7rem 1.1rem;
+      font-size: 0.88rem;
+      box-shadow: 2px 2px 0 #171614;
+    }
+
+    /* Scroll reveal baseline: visible by default so reduced-motion or no-JS never hides content */
+    .reveal-item {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    🎬 <strong>Curso + Código-Fonte Completo</strong>: Receba o Estúdio Autônomo 2D/3D pronto para rodar + acesso imediato via <strong>Kiwify</strong>.
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand" aria-label="Estúdio Autônomo 2D e 3D">
+        <span class="brand-mark">2D/3D</span>
+        <span>Estúdio Autônomo</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#antes-depois">Transformação</a>
+        <a href="#arquitetura">Agentes &amp; Skills</a>
+        <a href="#grade">Grade do Curso</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a href="#oferta" class="shimmer-btn header-cta" data-kiwify-trigger>
+        Acessar na Kiwify
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="badge-dot" aria-hidden="true"></span>
+            Remotion + Three.js Cel-Shaded + Agentes IA
+          </div>
+
+          <h1 class="h1-hero">
+            Crie Vídeos Animados em 2D &amp; 3D <span class="light-weight">no piloto automático.</span>
+          </h1>
+
+          <p class="hero-lead">
+            Domine o método exato para transformar uma simples ideia de roteiro em animações verticais <strong>9:16 a 60fps</strong> com narração neural PT-BR, legendas karaokê e upload automático — levando junto o <strong>template completo do Estúdio</strong>.
+          </p>
+
+          <div class="hero-badges">
+            <span class="badge-pill">4 Templates Prontos (2D &amp; 3D)</span>
+            <span class="badge-pill">7 Agentes Especialistas</span>
+            <span class="badge-pill">YouTube Data API v3</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#oferta" class="shimmer-btn">
+              Garantir Curso + Código na Kiwify
+            </a>
+            <a href="#arquitetura" class="btn-secondary">
+              Ver por dentro do Estúdio
+            </a>
+          </div>
+
+          <div class="hero-proof">
+            <span><strong>Entrega imediata</strong> via área de membros Kiwify</span>
+            <span><strong>7 dias</strong> de garantia incondicional</span>
+            <span><strong>100% seu</strong> — sem mensalidade de IA</span>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="studio-frame">
+            <div class="studio-frame-bar">
+              <div class="window-dots" aria-hidden="true">
+                <span style="background:#EF4444"></span>
+                <span style="background:#F59E0B"></span>
+                <span style="background:#22C55E"></span>
+              </div>
+              <span>remotion studio • 1080×1920 @ 60fps</span>
+            </div>
+            <img
+              src="assets/hero-studio.jpg"
+              alt="Estação de trabalho do Estúdio Autônomo 2D e 3D exibindo cenas cel-shaded em monitor vertical 9:16"
+              width="1200"
+              height="900"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="floating-spec">
+            <span class="tag">ERR-001 → 026</span>
+            <span>QA automático + Lip-Sync determinístico</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skiper UI: Antes e Depois -->
+    <section id="antes-depois" class="band band-surface">
+      <div class="container">
+        <div class="section-head reveal-item">
+          <div class="eyebrow">Comparador Interativo • Skiper Pattern</div>
+          <h2 class="h2-section">De uma ideia em texto para um episódio 3D completo.</h2>
+          <p>Arraste a alavanca abaixo para comparar o ponto de partida (um roteiro simples no bloco de notas) com a cena final renderizada pelo motor Three.js Cel-Shaded.</p>
+        </div>
+
+        <div class="compare-shell reveal-item">
+          <div class="compare-stage" id="compareStage">
+            <img src="assets/before-prompt.jpg" alt="Antes: esboço de ideia e roteiro simples sobre a mesa" width="1280" height="720" loading="lazy" />
+            <div class="compare-after-layer" aria-hidden="true">
+              <img src="assets/style-3d-world.jpg" alt="Depois: personagem e cenário 3D cel-shaded renderizado com contorno preto" width="1024" height="1024" loading="lazy" />
+            </div>
+            <span class="compare-label before">ANTES: 1 Ideia em Texto</span>
+            <span class="compare-label after">DEPOIS: Cena 3D Cel-Shaded</span>
+            <div class="compare-divider" aria-hidden="true">
+              <div class="compare-handle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </div>
+            </div>
+            <input
+              type="range"
+              min="5"
+              max="95"
+              value="52"
+              class="compare-range"
+              id="compareRange"
+              aria-label="Comparar antes (roteiro) e depois (animação 3D renderizada)"
+            />
+          </div>
+          <div class="compare-caption">
+            <span><strong>Input:</strong> 1 objeto JSON em <code class="mono">pautas_fila.json</code></span>
+            <span><strong>Output:</strong> MP4 9:16 com voz neural <code class="mono">edge-tts</code> + legendas karaokê</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cult UI: Vitrine em Abas Dinâmicas -->
+    <section id="arquitetura" class="band">
+      <div class="container">
+        <div class="section-head reveal-item">
+          <div class="eyebrow">Por Dentro do Modelo • Cult UI Tabs</div>
+          <h2 class="h2-section">Tudo o que já vem pronto dentro da pasta do curso.</h2>
+          <p>Você não aprende apenas teoria: você baixa a arquitetura inteira de produção, com motores 2D e 3D, agentes orquestradores, skills documentadas e pipeline de publicação.</p>
+        </div>
+
+        <div class="tabs-wrap reveal-item">
+          <div class="tablist" role="tablist" aria-label="Componentes do Estúdio Autônomo 2D e 3D">
+            <button type="button" role="tab" id="tab-motores" aria-selected="true">4 Templates (2D &amp; 3D)</button>
+            <button type="button" role="tab" id="tab-agentes" aria-selected="false">7 Agentes Especialistas</button>
+            <button type="button" role="tab" id="tab-skills" aria-selected="false">8 Skills &amp; Protocolo ARGON</button>
+            <button type="button" role="tab" id="tab-automacao" aria-selected="false">Automação &amp; YouTube API</button>
+          </div>
+
+          <div class="tab-panels">
+            <!-- Panel 1 -->
+            <div role="tabpanel" aria-labelledby="tab-motores" tabindex="0">
+              <div class="panel-card">
+                <div class="bento-grid cols-4">
+                  <article class="mini-card">
+                    <span class="code-tag">3D VOLUMÉTRICO</span>
+                    <h4>Bananas3D</h4>
+                    <p>Episódio 3D completo em Three.js Cel-Shaded pronto para renderizar com 1 comando Remotion.</p>
+                  </article>
+                  <article class="mini-card">
+                    <span class="code-tag">3D CINEMA</span>
+                    <h4>Dumont3D</h4>
+                    <p>Personagens 3D articulados, hangar, biplano, iluminação volumétrica e câmera orbital.</p>
+                  </article>
+                  <article class="mini-card">
+                    <span class="code-tag">2D EM MUNDO 3D</span>
+                    <h4>Pisa (2D)</h4>
+                    <p>Bonecos 2D chapados com contorno preto dentro de um mundo 3D colorido com desfoque de lente.</p>
+                  </article>
+                  <article class="mini-card">
+                    <span class="code-tag">2D NARRATIVO</span>
+                    <h4>Bridge (2D)</h4>
+                    <p>Arquitetura modular de shaders, luzes, tinta e câmera deslizante para histórias rápidas.</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 2 -->
+            <div role="tabpanel" aria-labelledby="tab-agentes" hidden="until-found">
+              <div class="panel-card">
+                <div class="bento-grid cols-3">
+                  <article class="mini-card">
+                    <span class="code-tag">opdc-diretor</span>
+                    <h4>Showrunner &amp; Maestro</h4>
+                    <p>Recebe a ideia do vídeo, planeja cenas e coordena os 4 portões (Gates) de qualidade.</p>
+                  </article>
+                  <article class="mini-card">
+                    <span class="code-tag">opdc-roteirista</span>
+                    <h4>Roteirista Viral PT-BR</h4>
+                    <p>Escreve ganchos de 3s calibrados para TTS neural com marcações de atuação e câmera.</p>
+                  </article>
+                  <article class="mini-card">
+                    <span class="code-tag">opdc-char-builder-25d</span>
+                    <h4>Modelador 2.5D &amp; 3D</h4>
+                    <p>Constrói personagens modulares em Three.js seguindo proporções canônicas.</p>
+                  </article>
+                  <article class="mini-card">
+                    <span class="code-tag">opdc-cenario-arte</span>
+                    <h4>Cenários Multiplano</h4>
+                    <p>Monta camadas Z com parallax real, iluminação e pós-processamento cel-shaded.</p>
+                  </article>
+                  <article class="mini-card">
+                    <span class="code-tag">opdc-rig-camera</span>
+                    <h4>Rigging &amp; Lip-Sync</h4>
+                    <p>Sincroniza boca, piscadas e respiração a 60Hz direto do envelope de volume do áudio.</p>
+                  </article>
+                  <article class="mini-card">
+                    <span class="code-tag">opdc-audio-render + qa</span>
+                    <h4>Áudio, Render &amp; QA</h4>
+                    <p>Gera voz <code class="mono">edge-tts</code>, renderiza MP4 e audita telas pretas e enquadramento.</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3 -->
+            <div role="tabpanel" aria-labelledby="tab-skills" hidden="until-found">
+              <div class="panel-card">
+                <div class="bento-grid cols-2">
+                  <article class="mini-card">
+                    <span class="code-tag">skill_00 → skill_07</span>
+                    <h4>8 Manuais Operacionais Prontos</h4>
+                    <p>Cada etapa do estúdio possui sua skill dedicada: roteiro, construção de cenário, VFX, direção de câmera, animação de rig, revisão de QA e renderização final.</p>
+                  </article>
+                  <article class="mini-card">
+                    <span class="code-tag">ERR-001 → ERR-026</span>
+                    <h4>Memória Evolutiva &amp; Bíblia Visual</h4>
+                    <p>Todas as regras aprendidas em produção real (<code class="mono">lessons_learned.json</code> + <code class="mono">visual_bible.md</code>) já vêm configuradas para evitar erros de proporção, corte ou legenda.</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 4 -->
+            <div role="tabpanel" aria-labelledby="tab-automacao" hidden="until-found">
+              <div class="panel-card">
+                <div class="bento-grid cols-2">
+                  <article class="mini-card">
+                    <span class="code-tag">producao_autonoma.py</span>
+                    <h4>Fila de Pautas em Lote</h4>
+                    <p>Adicione temas em <code class="mono">pautas_fila.json</code>, rode <code class="mono">--dry-run</code> para testar ou <code class="mono">--proximo</code> para gerar áudio, legendas karaokê e vídeo final.</p>
+                  </article>
+                  <article class="mini-card">
+                    <span class="code-tag">youtube_api_uploader.py</span>
+                    <h4>Publicação Oficial via OAuth 2.0</h4>
+                    <p>Integração pronta com YouTube Data API v3 para enviar seus Shorts com título, descrição e tags sem depender de ferramentas de terceiros.</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OriginKit: Matriz Comparativa -->
+    <section class="band band-surface">
+      <div class="container">
+        <div class="section-head reveal-item">
+          <div class="eyebrow">Por que esse modelo? • OriginKit Matrix</div>
+          <h2 class="h2-section">Produção manual lenta vs. Estúdio em Código.</h2>
+          <p>Pare de pagar assinaturas caras que geram bonecos genéricos e inconsistentes.</p>
+        </div>
+
+        <div class="matrix-grid reveal-item">
+          <div class="matrix-col bad">
+            <h3><span class="icon-x" aria-hidden="true">✕</span> Jeito Tradicional / IAs Pagas</h3>
+            <ul class="matrix-list">
+              <li><span class="icon-x" aria-hidden="true">✕</span> Mensalidades em dólar por créditos que acabam no meio do projeto.</li>
+              <li><span class="icon-x" aria-hidden="true">✕</span> Personagens mudam de rosto e estilo a cada cena gerada.</li>
+              <li><span class="icon-x" aria-hidden="true">✕</span> Horas perdidas animando keyframe por keyframe ou legendar no braço.</li>
+              <li><span class="icon-x" aria-hidden="true">✕</span> Sem controle de câmera, iluminação cel-shaded ou enquadramento 9:16 real.</li>
+            </ul>
+          </div>
+
+          <div class="matrix-col good">
+            <h3><span class="icon-ok" aria-hidden="true">✓</span> Estúdio Autônomo 2D &amp; 3D</h3>
+            <ul class="matrix-list">
+              <li><span class="icon-ok" aria-hidden="true">✓</span> Roda localmente na sua máquina com Node.js, Python, FFmpeg e Chrome.</li>
+              <li><span class="icon-ok" aria-hidden="true">✓</span> 100% determinístico: personagens, cores e contorno preto sempre fiéis.</li>
+              <li><span class="icon-ok" aria-hidden="true">✓</span> Narração neural PT-BR (<code class="mono">edge-tts</code>) + legendas karaokê automáticas.</li>
+              <li><span class="icon-ok" aria-hidden="true">✓</span> Você recebe o curso passo a passo + o código-fonte completo para usar e adaptar.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grade do Curso -->
+    <section id="grade" class="band">
+      <div class="container">
+        <div class="section-head reveal-item">
+          <div class="eyebrow">Conteúdo Programático</div>
+          <h2 class="h2-section">O que você vai dominar em 6 módulos práticos.</h2>
+          <p>Do zero até seu primeiro canal automatizado de Shorts, Reels e TikTok no ar.</p>
+        </div>
+
+        <div class="curriculum-grid reveal-item">
+          <article class="module-card">
+            <span class="module-num">MÓDULO 01</span>
+            <h3>Setup do Estúdio em 15 Minutos</h3>
+            <p>Instalação limpa de Node.js, Python, FFmpeg, Remotion Studio e estrutura completa do projeto.</p>
+          </article>
+          <article class="module-card">
+            <span class="module-num">MÓDULO 02</span>
+            <h3>Animação 2D em Mundo 3D</h3>
+            <p>Como usar os templates Pisa e Bridge: bonecos 2D com contorno ink, parallax e desfoque de lente.</p>
+          </article>
+          <article class="module-card">
+            <span class="module-num">MÓDULO 03</span>
+            <h3>Three.js Cel-Shaded 3D</h3>
+            <p>Dissecando Bananas3D e Dumont3D: volumes 3D, sombras estilizadas, câmera orbital e pós-processamento.</p>
+          </article>
+          <article class="module-card">
+            <span class="module-num">MÓDULO 04</span>
+            <h3>Agentes IA, Skills &amp; Roteiro</h3>
+            <p>Como operar os 7 agentes especialistas e aplicar a regra de ouro do gancho de 3 segundos.</p>
+          </article>
+          <article class="module-card">
+            <span class="module-num">MÓDULO 05</span>
+            <h3>Voz Neural, Lip-Sync &amp; Karaokê</h3>
+            <p>Geração de áudio PT-BR sem custo por minuto, sincronia labial a 60Hz e legendas de alta retenção.</p>
+          </article>
+          <article class="module-card">
+            <span class="module-num">MÓDULO 06</span>
+            <h3>Automação &amp; YouTube Data API</h3>
+            <p>Configurando OAuth 2.0, fila em lote no <code class="mono">pautas_fila.json</code> e publicação automática.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Oferta Kiwify -->
+    <section id="oferta" class="band band-surface">
+      <div class="container">
+        <div class="offer-box reveal-item">
+          <div>
+            <div class="eyebrow" style="background: rgba(224,79,38,0.22); color: #FDBA74; border-color: rgba(253,186,116,0.35);">
+              Acesso Imediato • Plataforma Kiwify
+            </div>
+            <h2 class="h2-section" style="color: #FAF7F2;">Leve o Curso Completo + O Código-Fonte do Estúdio 2D/3D.</h2>
+            <ul class="offer-list">
+              <li>Aulas em vídeo passo a passo (do setup ao deploy do canal)</li>
+              <li>Pacote completo com os 4 templates (Bananas3D, Dumont3D, Pisa 2D, Bridge 2D)</li>
+              <li>Todos os 7 Agentes, 8 Skills e 26 Regras de QA (<code class="mono">ERR-001</code> a <code class="mono">ERR-026</code>)</li>
+              <li>Scripts Python de automação (<code class="mono">producao_autonoma.py</code> + YouTube API)</li>
+              <li>Atualizações futuras e acesso vitalício na Kiwify</li>
+            </ul>
+          </div>
+
+          <div class="price-panel">
+            <div class="price-old">De R$ 497,00 por apenas</div>
+            <div class="price-main">12× R$ 20,37</div>
+            <div class="price-cash">ou R$ 197,00 à vista no PIX / Cartão</div>
+
+            <a
+              href="https://pay.kiwify.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="shimmer-btn"
+              style="width: 100%;"
+              id="kiwifyCheckoutBtn"
+            >
+              Comprar Agora na Kiwify
+            </a>
+
+            <p class="guarantee-note">
+              🔒 Compra 100% segura via Kiwify • Garantia incondicional de 7 dias • Download imediato após aprovação.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OriginKit FAQ Accordion -->
+    <section id="faq" class="band">
+      <div class="container">
+        <div class="section-head reveal-item">
+          <div class="eyebrow">Dúvidas Frequentes</div>
+          <h2 class="h2-section" id="faq-heading">Perguntas antes de garantir sua vaga.</h2>
+        </div>
+
+        <div class="accordion reveal-item" aria-labelledby="faq-heading">
+          <details open>
+            <summary>Eu recebo o código-fonte completo do estúdio ou só aulas teóricas?</summary>
+            <p class="faq-body">
+              Você recebe os dois: o treinamento em vídeo explicando cada peça e o repositório completo pronto para baixar (com Remotion, Three.js Cel-Shaded, os 4 templates 2D/3D, os 7 agentes, as 8 skills e os scripts Python de automação).
+            </p>
+          </details>
+
+          <details>
+            <summary>Preciso pagar mensalidade de ferramentas caras de IA para gerar os vídeos?</summary>
+            <p class="faq-body">
+              Não. Toda a renderização 2D e 3D roda localmente com Three.js e Remotion, e a narração em português usa voz neural via <code class="mono">edge-tts</code> sem cobrança por minuto de vídeo gerado.
+            </p>
+          </details>
+
+          <details>
+            <summary>Funciona para YouTube Shorts, Instagram Reels e TikTok?</summary>
+            <p class="faq-body">
+              Sim! O projeto já sai configurado no enquadramento vertical oficial 9:16 (1080×1920 a 60fps), com zonas seguras para legendas karaokê e integração direta com a YouTube Data API v3.
+            </p>
+          </details>
+
+          <details>
+            <summary>Como funciona a entrega e a garantia na Kiwify?</summary>
+            <p class="faq-body">
+              Assim que o pagamento for confirmado (imediato no PIX ou cartão), você recebe o acesso à área de membros da Kiwify por e-mail. Você tem 7 dias corridos de garantia total para testar tudo sem risco.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Estúdio Autônomo 2D &amp; 3D (OPDC). Todos os direitos reservados.</span>
+      <span class="mono">Checkout &amp; Área de Membros: Kiwify</span>
+    </div>
+  </footer>
+
+  <!-- Mobile Conversion Dock -->
+  <div class="mobile-dock" role="region" aria-label="Compra rápida">
+    <div class="mobile-dock-price">
+      <small>Curso + Código 2D/3D</small>
+      <strong>12× R$ 20,37</strong>
+    </div>
+    <a href="#oferta" class="shimmer-btn">Garantir na Kiwify</a>
+  </div>
+
+  <script>
+    // 1. Skiper UI Before/After Slider
+    (() => {
+      const stage = document.getElementById('compareStage');
+      const range = document.getElementById('compareRange');
+      if (!stage || !range) return;
+
+      const updateSplit = (val) => {
+        stage.style.setProperty('--split', `${val}%`);
+      };
+
+      range.addEventListener('input', (e) => updateSplit(e.target.value));
+    })();
+
+    // 2. Cult UI Accessible Tabs (modern-web-guidance compliant)
+    (() => {
+      const tablist = document.querySelector('[role="tablist"]');
+      if (!tablist) return;
+
+      const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+      const panels = tabs.map((tab) =>
+        document.querySelector(`[role="tabpanel"][aria-labelledby="${tab.id}"]`)
+      );
+
+      const activateTab = (nextTab, moveFocus = false) => {
+        tabs.forEach((tab, idx) => {
+          const isSelected = tab === nextTab;
+          tab.setAttribute('aria-selected', String(isSelected));
+          tab.tabIndex = isSelected ? 0 : -1;
+
+          const panel = panels[idx];
+          if (panel) {
+            if (isSelected) {
+              panel.removeAttribute('hidden');
+              panel.tabIndex = 0;
+            } else {
+              panel.setAttribute('hidden', 'until-found');
+              panel.removeAttribute('tabindex');
+            }
+          }
+        });
+
+        nextTab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        if (moveFocus) nextTab.focus();
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.tabIndex = tab.getAttribute('aria-selected') === 'true' ? 0 : -1;
+
+        tab.addEventListener('click', () => activateTab(tab, false));
+
+        tab.addEventListener('keydown', (e) => {
+          let nextIndex = null;
+          if (e.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+          else if (e.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+          else if (e.key === 'Home') nextIndex = 0;
+          else if (e.key === 'End') nextIndex = tabs.length - 1;
+
+          if (nextIndex !== null) {
+            e.preventDefault();
+            activateTab(tabs[nextIndex], true);
+          }
+        });
+      });
+
+      // Sync tabs when browser Find-in-Page reveals a hidden="until-found" panel
+      panels.forEach((panel, idx) => {
+        if (!panel) return;
+        panel.addEventListener('beforematch', () => activateTab(tabs[idx], false));
+      });
+    })();
+
+    // 3. GSAP ScrollTrigger (respecting prefers-reduced-motion)
+    window.addEventListener('DOMContentLoaded', () => {
+      const motionOk = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+      if (!motionOk || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.reveal-item').forEach((el) => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 22,
+          duration: 0.65,
+          ease: 'power2.out',
+          clearProps: 'opacity,transform',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            once: true
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

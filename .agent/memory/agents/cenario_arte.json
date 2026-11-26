@@ -1,0 +1,22 @@
+{
+  "agent_id": "opdc-cenario-arte",
+  "role": "Diretor de Arte, Cenários Multiplano & VFX Ópticos",
+  "memory_version": "1.0.0",
+  "last_updated": "2026-11-12T02:20:00-03:00",
+  "visual_standards": [
+    "Estética 100% 2D Flat Vetorial estilo Ampulheta com sombreamento bicolor vertical (sem realismo fotográfico nem 3D ruidoso).",
+    "Chão padrão ancorado em GROUND_Y = 605 (84% de 720).",
+    "Todos os planos de fundo (céu, paredes, grama, cosmos) devem cobrir x=[-800, 2400] e y=[-500, 1200] para suportar zoom até 2.05x sem mostrar bordas vazias."
+  ],
+  "reusable_scenes": [
+    "lab (Laboratório do Professor com janelas, lousa e tripé óptico em x=525)",
+    "solar_waves (Ambiente escuro científico para ondas senoidais 400nm-700nm e espectro)",
+    "outdoor_rainbow (Campo aberto com colinas em paralaxe, chuva determinística, gota d'água com lupa macro e arco-íris panorâmico)"
+  ],
+  "learned_fixes": [
+    "ERR-006: Em v1, o raio luminoso cruzava o rosto do Professor e o texto amarelo da lousa. Solução consolidada: mover tripé/fonte óptica para x=525 e elevar raios da gota d'água para acima dos rótulos.",
+    "ERR-007 — Gráficos Cinematográficos com % Dinâmica e Efeito Vulcão: A bolinha guia deve carregar um badge indicador com percentual numérico em tempo real (+0% até +700%), emitindo anéis de calor/ondas de choque. A quebra de teto física só ocorre no milissegundo exato em que a ponta da linha ultrapassa a borda superior do card, com estilhaços voando e explosão de partículas.",
+    "ERR-008 — Protocolo de Assets Híbridos IA + Canvas 2.5D: Ao usar o image-generator para criar fundos e props (estações de trem, mostrador de velocímetro, caravelas, maquinários), sempre aplicar no prompt estilo matte painting de época com contorno limpo, paleta quente editorial e gerar SEM as partes móveis centrais. O Canvas 2D/Three acopla ponteiros, números, vapor e câmeras garantindo economia de tokens e harmonia visual 100% fiel à identidade do canal.",
+    "Usar partículas de poeira determinísticas (hash + seno) para dar vida atmosférica sem aleatoriedade quebrada no scrub."
+  ]
+}

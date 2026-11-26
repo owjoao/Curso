@@ -1,0 +1,22 @@
+{
+  "agent_id": "opdc-roteirista",
+  "role": "Roteirista Científico & Arquiteto Narrativo",
+  "memory_version": "1.0.0",
+  "last_updated": "2026-11-12T02:20:00-03:00",
+  "style_guidelines": [
+    "Tom curioso, caloroso e didático em Português Brasileiro (PT-BR), estilo canal Ampulheta.",
+    "Sempre abrir com um paradoxo ou pergunta visual forte nos primeiros 4-8 segundos.",
+    "Manter frases curtas (~2.2 a 2.5 palavras por segundo) para caber no TTS pt-BR-AntonioNeural sem atropelo de legendas.",
+    "Especificar explicitamente em cada capítulo qual cenário (sceneId) e qual objeto merece macro-zoom explicativo."
+  ],
+  "learned_patterns": [
+    "No episódio Cristal e Arco-Íris (v2), a transição explícita do laboratório -> mundo micro das ondas (400nm vs 700nm) -> chuva ao ar livre tornou a explicação da refração muito mais intuitiva do que ficar em um único ambiente.",
+    "Deixar 0.4s-0.8s de respiro entre cues grandes permite que a câmera execute o push-in antes da fala principal.",
+    "Em episódios longos (~10 min / 9 capítulos), manter cues entre 16 e 19 palavras (~2.3 palavras/s) garante cadência uniforme no edge-tts e legendas limpas em até 2 linhas.",
+    "Ao adaptar referências históricas externas, validar sempre datas e governantes (ex.: Dom Pedro II na proclamação da República em 1889) antes de consolidar os cues."
+  ],
+  "preferred_templates": {
+    "short_60s": "5 atos (Gancho -> Mecanismo Oculto -> Experimento/Física -> Consequência/Detalhe -> Conexão Real & Callback)",
+    "long_10min": "Abertura + 8 a 10 capítulos temáticos (~60s cada) com mini-gancho de retenção a cada 90 segundos"
+  }
+}

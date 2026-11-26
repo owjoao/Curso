@@ -1,0 +1,265 @@
+{
+  "agent_id": "opdc-qa-curador",
+  "role": "Auditor Visual Multimodal, Gatekeeper & Guardião da Evolução",
+  "memory_version": "2.1.0",
+  "last_updated": "2026-11-25T03:57:00-03:00",
+  "mandatory_verification_gates": [
+    "1. Playwright smoke test: zero console.error, zero pageerror, animação fluida.",
+    "2. FFprobe check: video H.264 1080x1920 (ou 1920x1080) 60fps + audio AAC ativo + duração dentro de +-0.25s.",
+    "3. Blackdetect check: ffmpeg -vf blackdetect=d=0.15:pix_th=0.10 deve retornar 0 ocorrências.",
+    "4. Inspeção visual multimodal via Questionário Inquisitivo de 32 Perguntas Críticas sobre frames reais extraídos."
+  ],
+  "inquisitive_audit_questionnaire": {
+    "block_1_structural_integrity": [
+      {
+        "id": "Q00",
+        "name": "Corpo Padrão Universal Canônico (ERR-018)",
+        "question": "O personagem foi gerado através da Fábrica Canônica Universal (UniversalHumanoidFactory.js / buildHumanoidCharacter) com anatomia 6.5 cabeças do Protocolo ARGON em vez de primitivas avulsas improvisadas?",
+        "veto_if": "Personagem modelado com formas geométricas avulsas improvisadas (CircleGeometry para cabeça, PlaneGeometry soltas para braços)."
+      },
+      {
+        "id": "Q01",
+        "name": "Pescoço e Cabeça",
+        "question": "A cabeça está solidamente apoiada sobre o pescoço e a base do pescoço entra no colarinho?",
+        "veto_if": "Espaço vazio, cabeça flutuando no ar ou decapitação."
+      },
+      {
+        "id": "Q02",
+        "name": "Ombros e Braços",
+        "question": "A manga do casaco conecta perfeitamente na quina do ombro?",
+        "veto_if": "Braço flutuando descolado do tronco ao rotacionar."
+      },
+      {
+        "id": "Q03",
+        "name": "Mãos e Punhos",
+        "question": "As mãos estão firmemente acopladas à ponta do punho/manga?",
+        "veto_if": "Vácuo visível ou mão flutuando solta sem conexão com o braço."
+      },
+      {
+        "id": "Q04",
+        "name": "Pernas e Pés",
+        "question": "As pernas saem debaixo da túnica/casaco e os calçados estão presos na ponta da perna com sola paralela ao piso?",
+        "veto_if": "Sapatos levitando soltos ou calças desconectadas da túnica."
+      },
+      {
+        "id": "Q05",
+        "name": "Props e Veículos",
+        "question": "Rodas, bielas, chaminés e lanternas estão mecanicamente acopladas ao chassi?",
+        "veto_if": "Rodas flutuando soltas da carroceria ou fumaça nascendo no ar fora da chaminé."
+      }
+    ],
+    "block_2_hair_beard_face": [
+      {
+        "id": "Q06",
+        "name": "Fronteira Cabelo vs Barba",
+        "question": "O cabelo está 100% restrito ao topo e têmporas do crânio?",
+        "veto_if": "Mecha, costeleta ou mancha descendo e fundindo com o bigode, parecendo que o cabelo virou barba."
+      },
+      {
+        "id": "Q07",
+        "name": "Respiro do Bigode (ERR-005)",
+        "question": "Há uma faixa nítida de pele visível (>= 0.07 unidades) entre a base do nariz e o topo do bigode?",
+        "veto_if": "Bigode colado diretamente na narina ou invadindo a base do nariz."
+      },
+      {
+        "id": "Q08",
+        "name": "Proporção do Cabelo",
+        "question": "O cabelo respeita o formato compacto e espetado estilo Einstein?",
+        "veto_if": "Cabelo inchado parecendo cogumelo gigante ou cobrindo os óculos e olhos."
+      },
+      {
+        "id": "Q09",
+        "name": "Boca e Expressão",
+        "question": "A linha da boca está posicionada abaixo do bigode e visível durante o sorriso/fala?",
+        "veto_if": "Boca oclusa, sumida atrás de manchas ou deformada."
+      },
+      {
+        "id": "Q10",
+        "name": "Óculos e Olhos",
+        "question": "Os aros dos óculos contêm as pupilas centralizadas sem vazamento de esclera ou corte?",
+        "veto_if": "Pupilas fora do aro ou óculos tortos/desalinhados."
+      }
+    ],
+    "block_3_hand_orientation_anatomy": [
+      {
+        "id": "Q11",
+        "name": "Orientação dos Polegares",
+        "question": "No movimento de arremesso ou descanso, o polegar da mão direita aponta para o lado anatômico correto (para cima ou para fora)?",
+        "veto_if": "Polegar apontando para o chão ou rotação anatômica invertida."
+      },
+      {
+        "id": "Q12",
+        "name": "Mão Esquerda vs Mão Direita",
+        "question": "A mão direita está com o polegar à esquerda da palma e a esquerda com o polegar à direita ao olhar de frente?",
+        "veto_if": "Inversão de sinais espelhando a mão errada no braço."
+      },
+      {
+        "id": "Q13",
+        "name": "Sentido de Flexão dos Braços",
+        "question": "Ao abrir os braços, eles rotacionam para FORA da silhueta do corpo?",
+        "veto_if": "Braços cruzando bizarramente para DENTRO sobre a gravata borboleta e peitoral."
+      },
+      {
+        "id": "Q14",
+        "name": "Fechamento dos Dedos",
+        "question": "Ao pegar a moeda ou objeto, os dedos fecham organicamente em volta do item?",
+        "veto_if": "Objeto atravessando a geometria da mão ou levitando acima dela."
+      }
+    ],
+    "block_4_canonical_proportions_and_scale": [
+      {
+        "id": "Q15",
+        "name": "Moeda vs Mão e Cabeça (ERR-016)",
+        "question": "A moeda possui tamanho físico compatível com o corpo humano (diâmetro de 10% a 18% da altura da cabeça e menor que a palma da mão)?",
+        "veto_if": "Moeda do tamanho da cabeça do personagem, parecendo um escudo, calota de carro ou prato de jantar na mão do personagem."
+      },
+      {
+        "id": "Q16",
+        "name": "Props Menores (Copos, Canecas, Lupas, Canetas)",
+        "question": "Pequenos objetos do cotidiano cabem confortavelmente na mão do personagem (diâmetro de xícara ~20-25% da cabeça, caneta ~espessura de um dedo)?",
+        "veto_if": "Caneca do tamanho do peitoral parecendo um balde ou caneta parecendo um tronco de árvore."
+      },
+      {
+        "id": "Q17",
+        "name": "Óculos vs Rosto",
+        "question": "A armação dos óculos acompanha a largura do crânio sem que as lentes cubram a bochecha inteira até o queixo?",
+        "veto_if": "Lentes gigantes cobrindo o queixo ou transbordando as têmporas."
+      },
+      {
+        "id": "Q18",
+        "name": "Cenário e Mobília vs Humanoide",
+        "question": "A mesa, balcão ou lousa alinham na altura da cintura/cotovelos do personagem em pé (entre 40% e 50% da altura total)?",
+        "veto_if": "Mesa batendo no queixo parecendo que o personagem afundou no chão, ou abaixo dos joelhos como mesinha de centro."
+      },
+      {
+        "id": "Q19",
+        "name": "Portas, Janelas e Veículos",
+        "question": "Portas têm altura para passagem de um adulto (1.3x a 1.5x a altura do humanoide) e carruagens/trens têm janelas alinhadas com a visão do passageiro?",
+        "veto_if": "Trem parecendo brinquedo de miniatura ou personagem parecendo gigante esmagando a carruagem."
+      },
+      {
+        "id": "Q20",
+        "name": "Macro Óptico vs Escala de Mundo (ERR-016)",
+        "question": "Detalhes microscópicos ou milimétricos (ex: as 96 ranhuras da moeda) são revelados por aproximação cinematográfica de câmera (macro zoom) e NUNCA inflando o prop para dimensões gigantescas na mão do personagem?",
+        "veto_if": "Prop fisicamente inflado em escala gigante no mesmo plano que o personagem."
+      },
+      {
+        "id": "Q21",
+        "name": "Proporção Anatômica Universal (ARGON 6.5 Cabeças)",
+        "question": "Os braços têm comprimento orgânico (cotovelos na cintura, ponta dos dedos na metade da coxa) e o tronco respeita a proporção 45:55 em relação às pernas?",
+        "veto_if": "Braços curtos de t-rex ou longos estilo primata."
+      }
+    ],
+    "block_5_framing_occlusion": [
+      {
+        "id": "Q22",
+        "name": "Elemento-Chave Íntegro",
+        "question": "No momento em que o objeto estelar é apresentado, ele está com seu detalhe centralizado e 100% contido no enquadramento vertical 9:16?",
+        "veto_if": "Objeto gigante, torto ou cortado nas margens da tela."
+      },
+      {
+        "id": "Q23",
+        "name": "Isolamento no Ápice",
+        "question": "Durante o momento de slow-motion/revelação, o objeto está no ar limpo, sem oclusão por texto ou cabeça?",
+        "veto_if": "Objeto coberto por legendas, cabeça do personagem ou barras de interface."
+      },
+      {
+        "id": "Q24",
+        "name": "Cortes de Cabeça/Membros",
+        "question": "O topo do crânio do personagem ou os sapatos estão dentro da safe zone?",
+        "veto_if": "Cabeça decepada no topo ou pés cortados na base sem intenção cinematográfica."
+      },
+      {
+        "id": "Q25",
+        "name": "Legibilidade de Badges e Textos",
+        "question": "Os cartões gráficos ocupam no máximo 15% da altura da tela, com tipografia nítida sem colidir com o foco?",
+        "veto_if": "Badge cobrindo o prop ou texto ilegível/gigante."
+      }
+    ],
+    "block_6_physics_rotation_motion": [
+      {
+        "id": "Q26",
+        "name": "Giro Físico Coerente",
+        "question": "A moeda/objeto gira conforme a física real (cambalhotas no eixo horizontal end-over-end estilo juiz de futebol)?",
+        "veto_if": "Moeda girando como prato torto/frisbee desgovernado."
+      },
+      {
+        "id": "Q27",
+        "name": "Direção das Rodas",
+        "question": "As rodas do veículo giram no sentido correto da translação linear (omega = -v / R)?",
+        "veto_if": "Rodas patinando para trás enquanto o trem anda para a frente."
+      },
+      {
+        "id": "Q28",
+        "name": "Zero Telas Estáticas (Hold Dinâmico)",
+        "question": "Em momentos de pausa narrativa, existe creeping push-in de câmera (0.15% a 0.35%/f) ou respiração orgânica?",
+        "veto_if": "Trecho de 12 ou mais frames com luma diff < 0.02 (vídeo congelado)."
+      },
+      {
+        "id": "Q29",
+        "name": "Aceleração Orgânica",
+        "question": "A aproximação e desaceleração da câmera utilizam a curva canônica smootherstep(t)?",
+        "veto_if": "Transições lineares duras ou solavancos bruscos de enquadramento."
+      }
+    ],
+    "block_7_render_shaders_audio": [
+      {
+        "id": "Q30",
+        "name": "Zero Z-Fighting",
+        "question": "Há superfícies ou sombras piscando/cintilando devido a planos no mesmo Z?",
+        "veto_if": "Flicker visível entre meshes sobrepostas."
+      },
+      {
+        "id": "Q31",
+        "name": "Zero Telas Pretas",
+        "question": "O comando blackdetect=d=0.15 retornou zero ocorrências?",
+        "veto_if": "Qualquer blackframe >= 0.15s."
+      },
+      {
+        "id": "Q32",
+        "name": "Loudness de Áudio",
+        "question": "O áudio integrado está calibrado entre -23 e -25 LUFS sem picos > -1.0 dB True Peak?",
+        "veto_if": "Áudio distorcendo, estourando ou inaudível."
+      }
+    ]
+  },
+  "audited_episodes": [
+    {
+      "episode": "episodio_01_cristal_arco_iris_60s.mp4",
+      "verdict": "PASSED"
+    },
+    {
+      "episode": "episodio_01_cristal_arco_iris_v2_60s.mp4",
+      "verdict": "PASSED"
+    },
+    {
+      "episode": "animacao_ranhuras_moeda_12s.mp4",
+      "verdict": "PASSED",
+      "notes": "Auditado sob o Protocolo ERR-016 (32 perguntas): Moeda com escala biológica real de bolso (r=0.13, ~15% da cabeça, encaixe natural na mão). No ápice, aproximação da câmera via macro-zoom ótico (Z=apexZ+0.95), destacando os 96 dentes sem inflar a geometria no mundo 3D. 0 blackframes, 360 frames perfeitos."
+    },
+    {
+      "episode": "animacao_ranhuras_moeda_12s.mp4",
+      "audit_timestamp": "2026-11-25T09:55:00-03:00",
+      "verdict": "PASSED_WITH_DISTINCTION",
+      "inquisitive_score": "34/34",
+      "report_file": "reports/RELATORIO_AUDITORIA_QA_PERSONAGEM_CANONICO.md",
+      "notes": "Auditoria pós-construção do personagem canônico (UniversalHumanoidFactory.js). Zero descolamentos, tracking aos 0:02s corrigido, moeda em escala real r=0.13 com macro-zoom Z=apexZ+0.95 e zero frames pretos."
+    },
+    {
+      "episode": "animacao_ranhuras_moeda_12s.mp4",
+      "audit_timestamp": "2026-11-25T09:55:00-03:00",
+      "verdict": "PASSED_WITH_DISTINCTION",
+      "inquisitive_score": "34/34",
+      "report_file": "reports/RELATORIO_AUDITORIA_QA_PERSONAGEM_CANONICO.md",
+      "notes": "Auditoria pós-construção do personagem canônico (UniversalHumanoidFactory.js). Zero descolamentos, tracking aos 0:02s corrigido, moeda em escala real r=0.13 com macro-zoom Z=apexZ+0.95 e zero frames pretos."
+    },
+    {
+      "episode": "animacao_ranhuras_moeda_12s.mp4",
+      "audit_timestamp": "2026-11-25T09:55:00-03:00",
+      "verdict": "PASSED_WITH_DISTINCTION",
+      "inquisitive_score": "34/34",
+      "report_file": "reports/RELATORIO_AUDITORIA_QA_PERSONAGEM_CANONICO.md",
+      "notes": "Auditoria pós-construção do personagem canônico (UniversalHumanoidFactory.js). Zero descolamentos, tracking aos 0:02s corrigido, moeda em escala real r=0.13 com macro-zoom Z=apexZ+0.95 e zero frames pretos."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "studio_name": "Estúdio Autônomo 2D — O Porquê das Coisas (Padrão Marvel Studio)",
+  "version": "2.0.0",
+  "project_path": ".",
+  "engine": "Engine2D HTML5 Canvas (Ampulheta + claude-animated-shorts)",
+  "production_mode": "16:9 1280x720 (extensível por capítulos para vídeos longos 10+ min)",
+  "director_agent": "opdc-diretor",
+  "global_memory": ".agent/memory/lessons_learned.json",
+  "visual_bible": ".agent/memory/visual_bible.md",
+  "agents": [
+    {
+      "id": "opdc-diretor",
+      "role": "Showrunner & Diretor Executivo de Produção",
+      "definition": "./team/agents\\opdc-diretor.md",
+      "skills": [".agent/skills/skill_00_studio_director.md"],
+      "memory": ".agent/memory/agents/diretor.json",
+      "activates": [
+        "opdc-roteirista",
+        "opdc-cenario-arte",
+        "opdc-rig-camera",
+        "opdc-audio-render",
+        "opdc-qa-curador"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "opdc-roteirista",
+      "role": "Roteirista Científico & Arquiteto Narrativo",
+      "definition": "./team/agents\\opdc-roteirista.md",
+      "skills": [".agent/skills/skill_01_scriptwriter.md"],
+      "memory": ".agent/memory/agents/roteirista.json",
+      "deliverable": "src/episodes/<slug>.js (chapters, cues, beats)",
+      "status": "active"
+    },
+    {
+      "id": "opdc-cenario-arte",
+      "role": "Diretor de Arte, Cenários Multiplano & VFX Ópticos",
+      "definition": "./team/agents\\opdc-cenario-arte.md",
+      "skills": [
+        ".agent/skills/skill_02_scenery_builder.md",
+        ".agent/skills/skill_03_lighting_vfx.md"
+      ],
+      "memory": ".agent/memory/agents/cenario_arte.json",
+      "deliverable": "src/core/Engine2D.js (SceneryAndLighting2D)",
+      "status": "active"
+    },
+    {
+      "id": "opdc-rig-camera",
+      "role": "Mestre de Rigging 2D & Diretor de Cinematografia",
+      "definition": "./team/agents\\opdc-rig-camera.md",
+      "skills": [
+        ".agent/skills/skill_04_camera_director.md",
+        ".agent/skills/skill_05_rig_animator.md"
+      ],
+      "memory": ".agent/memory/agents/rig_camera.json",
+      "deliverable": "src/core/Engine2D.js (ProfessorRig2D + CameraController2D)",
+      "status": "active"
+    },
+    {
+      "id": "opdc-audio-render",
+      "role": "Designer de Som, Dublagem Neural & Engenheiro de Render",
+      "definition": "./team/agents\\opdc-audio-render.md",
+      "skills": [".agent/skills/skill_07_audio_and_render.md"],
+      "memory": ".agent/memory/agents/audio_render.json",
+      "deliverable": "scripts/render_<slug>.py + renders/<slug>.mp4",
+      "status": "active"
+    },
+    {
+      "id": "opdc-qa-curador",
+      "role": "Auditor Visual Multimodal, Gatekeeper & Guardião da Evolução",
+      "definition": "./team/agents\\opdc-qa-curador.md",
+      "skills": [".agent/skills/skill_06_qa_reviewer.md"],
+      "memory": ".agent/memory/agents/qa_curador.json",
+      "deliverable": "scripts/qa_episode_player.py + renders/qa_mp4_frames*/ + lessons_learned.json",
+      "status": "active"
+    }
+  ]
+}

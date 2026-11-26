@@ -1,0 +1,7 @@
+edge-tts
+pillow
+numpy
+playwright
+google-api-python-client
+google-auth-oauthlib
+google-auth-httplib2
