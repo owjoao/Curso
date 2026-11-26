@@ -33,15 +33,12 @@ Assim que ler este prompt, cumprimente o usuário e faça EXATAMENTE estas 5 per
 5. "Onde você pretende postar seus vídeos? (YouTube Shorts, Instagram Reels, TikTok ou todos)"
 
 Aguarde as respostas do usuário. Assim que ele responder:
-- Crie a pasta principal no local exato escolhido por ele.
-- Organize os arquivos/repositórios em subpastas limpas e numeradas:
-  - `00-estudio-principal-opdc/` (motor principal 2D/3D, 7 agentes, 8 skills, regras `ERR-001` a `ERR-026`)
-  - `01-claude-stickman-shorts/` (`https://github.com/SyedBahjat/claude-stickman-shorts.git`)
-  - `02-viral-short-videos-ai/` (`https://github.com/fiwon123/viral-short-videos-ai.git`)
-  - `03-stick-figure-shorts/` (`https://github.com/deenukhan/stick-figure-shorts.git`)
-  - `04-motionforge/` (`https://github.com/aykutucesai/motionforge.git`)
-  - `05-motion-tools-and-skills/` (`https://github.com/VisualxIntelligence/motion-tools-and-skills.git`)
-- Se o usuário pediu para clonar e alguma subpasta ainda não existir, faça `git clone --depth 1` automaticamente.
+- Crie a pasta principal no local exato escolhido por ele e entre nela.
+- Execute os clones abaixo automaticamente (sem precisar de login):
+  1. `git clone --depth 1 https://github.com/owjoao/Curso.git 00-estudio-principal-opdc`
+  2. Se o usuário pediu os packs extras ('Todos' ou algum dos 5 packs), clone:
+     `git clone --depth 1 https://github.com/owjoao/curso-videos-2d-3d-repos.git _pack_extras`
+     e mova para a pasta principal apenas as subpastas escolhidas (`01-claude-stickman-shorts`, `02-viral-short-videos-ai`, `03-stick-figure-shorts`, `04-motionforge`, `05-motion-tools-and-skills`), removendo a pasta temporária `_pack_extras` em seguida.
 
 ========================================================================
 FASE 2 — VERIFICAÇÃO E INSTALAÇÃO DO AMBIENTE
